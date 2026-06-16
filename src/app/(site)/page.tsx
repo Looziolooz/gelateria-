@@ -81,8 +81,8 @@ export default function HomePage() {
         <HomeBoutiquesPanel />
       </section>
 
-      {/* 4 — STYLES (orange) */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-primary c-white overflow-hidden flex items-center">
+      {/* 4 — STYLES (petrol — brand statement panel, high contrast) */}
+      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-secondary c-white overflow-hidden flex items-center">
         <div className="w-full grid lg:grid-cols-2 gap-10 items-center pt-28 lg:pt-24 pb-12 px-[5vw]">
           <div>
             <h2 className="main-title caviar fs-130 fs-m-50 t-u t-lh-1 mb-6">Il gelato Artigiano<br />un&apos;icona italiana</h2>

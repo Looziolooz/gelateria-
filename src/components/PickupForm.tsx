@@ -298,7 +298,7 @@ export function PickupForm() {
           type="button"
           disabled={!canConfirm}
           onClick={() => setConfirmed(true)}
-          className={cn("w-full btn-pill bg-primary border-primary", !canConfirm && "opacity-45 cursor-not-allowed")}
+          className={cn("w-full btn-pill", !canConfirm && "opacity-45 cursor-not-allowed")}
         >
           Conferma prenotazione
         </button>
