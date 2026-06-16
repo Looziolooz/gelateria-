@@ -1,0 +1,214 @@
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-full-content block vw100 vh100 p-r"]
+  Crema Alta Gelateria
+[DIV class="title caviar fs-120 fs-m-50 t-lh-12"]
+  Gelato per amore
+  Crema Alta Gelateria
+[DIV class="btn-scroll caviar b-primary c-white p-a fs-16 fs-m-11 f-w-600 t-u c-pointer"]
+  SCROLL
+[IMG] //gelatocrema.com/cdn/shop/files/CATTABRICA-2-ORIZZONTALE.jpg  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/CATTABRICA-2-VERTICALE.jpg  alt=""
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-image-slider b-back-1 block vw100 vh100 m-h-fit-content p-r"]
+[DIV class="columns d-g gap-20 gap-m-40 h100"]
+[DIV class="title caviar fs-60 fs-m-30 t-lh-12 t-u mb-30"]
+  IL GELATO: UNA STORIA D'AMORE
+  Amore per la qualità, per la tradizione, per la ricercatezza di ingredienti e lavorazioni.
+[IMG] //gelatocrema.com/cdn/shop/files/premio_3_coni.png  alt=""
+  L’eccellenza del gelato Crema è stata premiata con 3 coni Gambero Rosso, il più alto riconoscimento dedicato all’arte della gelateria italiana e alla sua continua innovazione.
+[IMG] //gelatocrema.com/cdn/shop/files/gelato_1.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/gelato_2.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s3.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s4.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s5.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s6.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s7.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s10.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s8.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/s9.png  alt=""
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-boutiques-list b-back-2 block vw100 vh100 m-h-fit-content c-secondary pt-m-40 pt-m-60"]
+[DIV class="head d-g gap-15 ae pb-60"]
+[DIV class="title fs-70 fs-m-30 caviar t-u t-lh-1 mb-m-20"]
+  Boutiques
+  Milano
+  Roma
+  Via fiori chiari 16
+[DIV class="cta caviar c-primary fs-16 fs-m-13 f-w-600 mb-20"]
+[LINK href="https://goo.gl/maps/sxsW2Am6EAdm5qRg6"]
+  Come arrivare
+[LINK href="//gelatocrema.com/cdn/shop/files/Menu__Fiori_Chiari__IT.jpg?v=11398695250188219979"]
+  Scopri il Menù
+  Lunedì - Domenica 12:00 - 23:30
+  Tel: (+39) 02 688 566 33
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  GLOVO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  JUSTEAT
+[IMG] //gelatocrema.com/cdn/shop/files/Via_Fiori_Chiari.jpg  alt=""
+  Via g. Da Procida 29
+[DIV class="cta caviar c-primary fs-16 fs-m-13 f-w-600 mb-20"]
+[LINK href="https://goo.gl/maps/XJzFTQLLNAciRwmN6"]
+  Come arrivare
+[LINK href="//gelatocrema.com/cdn/shop/files/Menu__Procida__IT.jpg?v=5254158645924028570"]
+  Scopri il Menù
+  Lunedì - Domenica 12:00 - 23:30
+  Tel: (+39) 02 392 851 78
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  DELIVEROO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  GLOVO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  JUSTEAT
+[IMG] //gelatocrema.com/cdn/shop/files/Via_G._da_Procida_esterno.jpg  alt=""
+  Piazza Napoli 15
+[DIV class="cta caviar c-primary fs-16 fs-m-13 f-w-600 mb-20"]
+[LINK href="https://goo.gl/maps/qgchiJ5RWT6eGCQL9"]
+  Come arrivare
+[LINK href="//gelatocrema.com/cdn/shop/files/Menu__Pzza_Napoli__IT.jpg?v=11568811347030896077"]
+  Scopri il Menù
+  Martedì - Domenica 12:00 - 23:30
+  Chiuso il Lunedì
+  Tel: (+39) 02 458 962 52
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  GLOVO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  JUSTEAT
+[IMG] //gelatocrema.com/cdn/shop/files/Piazza_Napoli-esterno.jpg  alt=""
+  Via Giulia 18
+[DIV class="cta caviar c-primary fs-16 fs-m-13 f-w-600 mb-20"]
+[LINK href="https://maps.app.goo.gl/NoDUKbfKkY68tNw66"]
+  Come arrivare
+[LINK href="//gelatocrema.com/cdn/shop/files/Menu__Via_Giulia__IT.jpg?v=12501889308443201961"]
+  Scopri il Menù
+  Martedì - Domenica 11:00-22:00
+  Chiuso il Lunedì
+  Tel: (+39) 06 688 058 51
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  DELIVEROO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  GLOVO
+[DIV class="btn small primary d-ib caviar b-primary c-white mb-m-20"]
+  JUSTEAT
+[IMG] //gelatocrema.com/cdn/shop/files/boutique-crema-roma-via-giulia-18.jpg  alt=""
+  Via Leone IV 62a
+[DIV class="cta caviar c-primary fs-16 fs-m-13 f-w-600 mb-20"]
+[LINK href="https://maps.app.goo.gl/13hAHPjbN42EAuvT9"]
+  Come arrivare
+[LINK href="//gelatocrema.com/cdn/shop/files/Menu__Leone_IV__IT.jpg?v=17972395235080701996"]
+  Scopri il Menù
+  Lunedì - Domenica 11:00 - 23:00
+  Tel: (+39) 06 06 429 170 05
+[IMG] //gelatocrema.com/cdn/shop/files/CREMA_-_Via_Leone_IV_62a_-_Facciata.jpg  alt=""
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-styles b-primary block vw100 vh100 m-h-fit-content p-r c-white pt-m-60 pt-m-60"]
+[DIV class="title l-3 mb-m-70"]
+[DIV class="main-title caviar fs-130 fs-m-30 t-u align-c mb-30 align-c"]
+  IL GELATO CREMA
+  UN’ICONA ITALIANA
+[DIV class="subtitle d-g col-2"]
+  UNA STORIA DI BONTÀ
+  E DI ECCELLENZA
+  AMORE...
+  AL PRIMO ASSAGGIO
+[IMG] //gelatocrema.com/cdn/shop/files/coffee.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/Cioccolato_Chuao_2.jpg  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/cono.png  alt=""
+  Oltre 50 gusti, che amiamo definire “stili” di gelato, realizzati ad arte con materie prime di altissima qualità, strumenti della tradizione e una minuziosa attenzione verso i particolari e le esigenze della clientela.
+[DIV class="btn secondary d-ib caviar mt-40 mt-m-20"]
+  STILI DI GELATO
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-full-content crema-icons block vw100 vh100 m-h-fit-content p-r"]
+[IMG] //gelatocrema.com/cdn/shop/files/icon-gluten.svg  alt=""
+[DIV class="title core fs-16 fs-m-12 mb-5"]
+  100% Gluten free
+  Tutti i nostri prodotti sono senza glutine, realizzati con attenzione nei laboratori Crema.
+[IMG] //gelatocrema.com/cdn/shop/files/icon-vegan.svg  alt=""
+[DIV class="title core fs-16 fs-m-12 mb-5"]
+  Opzioni Lactose-free e vegan
+  Il gelato è condivisione: abbiamo tantissime opzioni senza lattosio e alternative vegane.
+[IMG] //gelatocrema.com/cdn/shop/files/icon-natural.svg  alt=""
+[DIV class="title core fs-16 fs-m-12 mb-5"]
+  Produzione NATURALE
+  Crema è attenzione alla stagionalità e zero coloranti, conservanti e semilavorati industriali.
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Libro degli Ingredienti
+[IMG] //gelatocrema.com/cdn/shop/files/coni-full.jpg  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/coni-full.jpg  alt=""
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-boutiques-map b-back-1 block vh100 m-h-fit-content p-r c-secondary py-m-40"]
+[DIV class="content full-div d-g"]
+[DIV class="title fs-70 fs-m-30 caviar t-u t-lh-12 mb-40"]
+  VIENI A TROVARCI
+[DIV class="lbl core fs-16 fs-m-12 c-primary mb-20"]
+  Milano
+  Roma
+[LINK href="https://goo.gl/maps/sxsW2Am6EAdm5qRg6"]
+  Via fiori chiari 16
+[LINK href="https://goo.gl/maps/XJzFTQLLNAciRwmN6"]
+  Via g. Da Procida 29
+[LINK href="https://goo.gl/maps/qgchiJ5RWT6eGCQL9"]
+  Piazza Napoli 15
+[LINK href="https://maps.app.goo.gl/NoDUKbfKkY68tNw66"]
+  Via Giulia 18
+[LINK href="https://maps.app.goo.gl/13hAHPjbN42EAuvT9"]
+  Via Leone IV 62a
+[DIV class="lbl core fs-16 fs-m-12 c-primary mb-20"]
+  Ordina a domicilio
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/logo-deliveroo.svg  alt=""
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via g. Da Procida 29
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via Giulia 18
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/logo-glovo.svg  alt=""
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via fiori chiari 16
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via g. Da Procida 29
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Piazza Napoli 15
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via Giulia 18
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/logo-justeat.svg  alt=""
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via fiori chiari 16
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via g. Da Procida 29
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Piazza Napoli 15
+[DIV class="btn small primary boutique d-ib caviar b-primary c-white t-u"]
+  Via Giulia 18
+[IMG] //gelatocrema.com/cdn/shop/files/milano_mappa.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/Piantina-Roma-con-scritte-maggio-2026-2-punti-vendita.png  alt=""
+  !-- BEGIN sections: footer-group -->
+
+=== SECTION class="shopify-section shopify-section-group-footer-group" ===
+[DIV class="claim core fs-16 fs-m-12 c-white mb-20 align-c"]
+  Iscriviti alla newsletter
+[DIV class="inputs d-g p-r"]
+[DIV class="crema-lbl floating-label text-xs"]
+  E-mail
+[DIV class="btn-arrow"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-arrow.svg  alt=""
+  Iscrivendomi alla newsletter accetto la
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[DIV class="blocks d-g px-20 py-40"]
+  ©2026 — Golconda Gelati SRL.
+  Via Nicolò Porpora 12, 00198 Roma.
+  P.IVA 15501451007
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[LINK href="https://www.iubenda.com/privacy-policy/24331519/cookie-policy"]
+  Cookie Policy
+[LINK href="https://www.instagram.com/crema_official_/"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-instagram-b.svg  alt=""
+[LINK href="https://www.facebook.com/gelatocremamilano"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-fb-b.svg  alt=""
+  !-- END sections: footer-group -->

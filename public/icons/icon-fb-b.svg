@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60" height="60" viewBox="0 0 60 60">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="60" height="60" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Griglia_di_ripetizione_10" data-name="Griglia di ripetizione 10" clip-path="url(#clip-path)">
+    <g id="Raggruppa_526" data-name="Raggruppa 526" transform="translate(-95 -7098)">
+      <g id="Ellisse_29" data-name="Ellisse 29" transform="translate(95 7098)" fill="none" stroke="#6a3f24" stroke-width="1">
+        <circle cx="30" cy="30" r="30" stroke="none"/>
+        <circle cx="30" cy="30" r="29.5" fill="none"/>
+      </g>
+      <path id="iconmonstr-facebook-1" d="M8.5,6.667H6V10H8.5V20h4.167V10H15.7L16,6.667H12.667V5.278c0-.8.16-1.111.929-1.111H16V0H12.827C9.83,0,8.5,1.319,8.5,3.846Z" transform="translate(114 7118)" fill="#6a3f24"/>
+    </g>
+  </g>
+</svg>

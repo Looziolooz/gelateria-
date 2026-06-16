@@ -1,0 +1,52 @@
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-where-to-find-us b-back-1 block vh100 m-h-fit-content p-r c-secondary"]
+[DIV class="content full-div d-g"]
+[DIV class="title fs-70 fs-m-40 caviar t-u t-lh-12 mb-40 mb-m-30"]
+  SIAMO QUI
+  Le boutique Crema si trovano a Milano. Scopri i diversi punti vendita qui sotto e vieni a trovarci dove preferisci. Ti aspettiamo!
+[DIV class="lbl core fs-16 fs-m-12 c-primary mb-20"]
+  Milano
+  Roma
+[LINK href="https://goo.gl/maps/sxsW2Am6EAdm5qRg6"]
+  Via fiori chiari 16
+[LINK href="https://goo.gl/maps/XJzFTQLLNAciRwmN6"]
+  Via g. Da Procida 29
+[LINK href="https://goo.gl/maps/qgchiJ5RWT6eGCQL9"]
+  Piazza Napoli 15
+[LINK href="https://maps.app.goo.gl/NoDUKbfKkY68tNw66"]
+  Via Giulia 18
+[LINK href="https://maps.app.goo.gl/13hAHPjbN42EAuvT9"]
+  Via Leone IV 62a
+[DIV class="info d-g"]
+[DIV class="social d-g"]
+[LINK href="https://www.instagram.com/crema_official_/"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-instagram-b.svg  alt=""
+[LINK href="https://www.facebook.com/gelatocremamilano"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-fb-b.svg  alt=""
+  !-- BEGIN sections: footer-group -->
+
+=== SECTION class="shopify-section shopify-section-group-footer-group" ===
+[DIV class="claim core fs-16 fs-m-12 c-white mb-20 align-c"]
+  Iscriviti alla newsletter
+[DIV class="inputs d-g p-r"]
+[DIV class="crema-lbl floating-label text-xs"]
+  E-mail
+[DIV class="btn-arrow"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-arrow.svg  alt=""
+  Iscrivendomi alla newsletter accetto la
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[DIV class="blocks d-g px-20 py-40"]
+  ©2026 — Golconda Gelati SRL.
+  Via Nicolò Porpora 12, 00198 Roma.
+  P.IVA 15501451007
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[LINK href="https://www.iubenda.com/privacy-policy/24331519/cookie-policy"]
+  Cookie Policy
+[LINK href="https://www.instagram.com/crema_official_/"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-instagram-b.svg  alt=""
+[LINK href="https://www.facebook.com/gelatocremamilano"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-fb-b.svg  alt=""
+  !-- END sections: footer-group -->

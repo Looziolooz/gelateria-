@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60">
+  <g id="Raggruppa_522" data-name="Raggruppa 522" transform="translate(3991 3090)">
+    <g id="Ellisse_49" data-name="Ellisse 49" transform="translate(-3991 -3090)" fill="none" stroke="#fff" stroke-width="1">
+      <circle cx="30" cy="30" r="30" stroke="none"/>
+      <circle cx="30" cy="30" r="29.5" fill="none"/>
+    </g>
+    <path id="iconmonstr-facebook-1" d="M8.5,6.667H6V10H8.5V20h4.167V10H15.7L16,6.667H12.667V5.278c0-.8.16-1.111.929-1.111H16V0H12.827C9.83,0,8.5,1.319,8.5,3.846Z" transform="translate(-3972 -3070)" fill="#fff"/>
+  </g>
+</svg>

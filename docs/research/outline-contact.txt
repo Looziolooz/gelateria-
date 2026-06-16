@@ -1,0 +1,84 @@
+
+=== SECTION class="shopify-section" ===
+[DIV class="crema-contact b-back-1 block vh100 m-h-fit-content p-r c-secondary"]
+[DIV class="content full-div d-g"]
+[DIV class="title-box d-g mb-40"]
+[DIV class="title fs-70 fs-m-40 caviar t-u"]
+  Contattaci
+  Messaggio
+  Lavora con noi
+  Per qualsiasi informazione o richiesta, contattaci compilando il form qui sotto. Cercheremo di risponderti al più presto.
+[DIV class="fieldset-row mb-40 mb-m-0"]
+[DIV class="crema-lbl floating-label text-xs"]
+  Nome *
+[DIV class="crema-lbl floating-label text-xs"]
+  Cognome *
+[DIV class="fieldset-row mb-40 mb-m-0"]
+[DIV class="crema-lbl floating-label text-xs"]
+  E-mail *
+[DIV class="crema-lbl floating-label text-xs"]
+  Oggetto *
+[DIV class="crema-lbl floating-label text-xs"]
+  Messaggio *
+[DIV class="form-bottom d-g"]
+  Acconsento al trattamento dei dati per l’esclusiva finalità di essere contattato per ricevere informazioni, come specificato nella
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+  Voglio iscrivermi alla newsletter Crema
+[DIV class="btn primary t-u caviar"]
+  Invia messaggio
+  Unisciti al team Crema! Segui il form qui sotto, allega il tuo CV e raccontaci brevemente di te e delle tue aspirazioni.
+[DIV class="fieldset-row mb-40 mb-m-0"]
+[DIV class="crema-lbl floating-label text-xs"]
+  Nome *
+[DIV class="crema-lbl floating-label text-xs"]
+  E-mail *
+[DIV class="fieldset-row mb-40 mb-m-0"]
+[DIV class="crema-lbl floating-label text-xs"]
+  Telefono *
+[DIV class="crema-lbl floating-label text-xs"]
+  Allega il tuo cv *
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-cv.svg  alt=""
+[DIV class="crema-lbl floating-label text-xs"]
+  Messaggio *
+[DIV class="form-bottom d-g"]
+  Acconsento al trattamento dei dati per l’esclusiva finalità di essere contattato per ricevere informazioni, come specificato nella
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+  Voglio iscrivermi alla newsletter Crema
+[DIV class="btn primary t-u caviar"]
+  Invia messaggio
+[DIV class="info d-g"]
+[DIV class="social d-g"]
+[LINK href="https://www.instagram.com/crema_official_/"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-instagram-b.svg  alt=""
+[LINK href="https://www.facebook.com/gelatocremamilano"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-fb-b.svg  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/coppetta-contact-us-def.png  alt=""
+[IMG] //gelatocrema.com/cdn/shop/files/lavora-con-noi.png  alt=""
+  !-- BEGIN sections: footer-group -->
+
+=== SECTION class="shopify-section shopify-section-group-footer-group" ===
+[DIV class="claim core fs-16 fs-m-12 c-white mb-20 align-c"]
+  Iscriviti alla newsletter
+[DIV class="inputs d-g p-r"]
+[DIV class="crema-lbl floating-label text-xs"]
+  E-mail
+[DIV class="btn-arrow"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-arrow.svg  alt=""
+  Iscrivendomi alla newsletter accetto la
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[DIV class="blocks d-g px-20 py-40"]
+  ©2026 — Golconda Gelati SRL.
+  Via Nicolò Porpora 12, 00198 Roma.
+  P.IVA 15501451007
+[LINK href="https://www.iubenda.com/privacy-policy/24331519"]
+  Privacy Policy
+[LINK href="https://www.iubenda.com/privacy-policy/24331519/cookie-policy"]
+  Cookie Policy
+[LINK href="https://www.instagram.com/crema_official_/"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-instagram-b.svg  alt=""
+[LINK href="https://www.facebook.com/gelatocremamilano"]
+[IMG] //gelatocrema.com/cdn/shop/t/2/assets/icon-fb-b.svg  alt=""
+  !-- END sections: footer-group -->
