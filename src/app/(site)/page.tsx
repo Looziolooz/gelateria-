@@ -42,9 +42,10 @@ export default function HomePage() {
         </span>
       </section>
 
-      {/* 2 — STORY + gelato gallery (part of the horizontal page scroll) */}
-      <section className="relative w-full lg:w-auto lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary pt-28 lg:pt-0 pb-10 lg:pb-0 lg:flex lg:flex-row lg:items-center lg:gap-7">
-        <div className="px-[5vw] lg:pl-[5vw] lg:pr-2 lg:w-[420px] lg:shrink-0 flex flex-col lg:justify-center mb-8 lg:mb-0">
+      {/* 2 — STORY + gelato gallery (independent slider with a visible scrollbar,
+            exactly like the original site's Swiper). */}
+      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary pt-28 lg:pt-0 pb-10 lg:pb-0 px-[5vw] lg:pr-0 lg:flex lg:flex-row lg:items-center lg:gap-10">
+        <div className="lg:w-[33%] lg:shrink-0 flex flex-col lg:justify-center mb-8 lg:mb-0">
           <h2 className="title caviar fs-60 fs-m-30 t-lh-1 t-u mb-6">Il gelato:<br />una storia d&apos;amore</h2>
           <p className="caviar text-[18px] md:text-[20px] leading-relaxed opacity-90 mb-8">
             Amore per la qualità, per la tradizione, per la ricercatezza di ingredienti e lavorazioni.
@@ -57,15 +58,16 @@ export default function HomePage() {
             </p>
           </div>
         </div>
-        {/* On desktop `lg:contents` dissolves this wrapper so the landscape
-            tiles join the panel's flex row and scroll WITH the horizontal page
-            scroll. On mobile it stays a touch-scroll strip. */}
-        <div className="flex gap-5 overflow-x-auto h-scroll px-[5vw] pb-4 lg:contents">
-          {GELATI.map((src, i) => (
-            <div key={i} className="relative shrink-0 w-72 sm:w-80 aspect-[4/3] lg:w-[500px] lg:aspect-[3/2] rounded-[16px] overflow-hidden bg-white shadow-md lg:last:mr-[5vw]">
-              <Image src={src} alt="Gusto di gelato Artigiano" fill className="object-cover" sizes="(max-width:1024px) 80vw, 500px" quality={92} />
-            </div>
-          ))}
+        {/* Independent horizontal slider — drag, trackpad, or wheel (captured by
+            HorizontalScroll). The gold scrollbar at the bottom reveals the gallery. */}
+        <div className="lg:flex-1 lg:min-w-0 lg:pr-[5vw]">
+          <div className="flex gap-5 overflow-x-auto h-scroll pb-5 lg:items-center">
+            {GELATI.map((src, i) => (
+              <div key={i} className="relative shrink-0 w-72 sm:w-80 lg:w-[460px] aspect-[4/3] lg:aspect-[3/2] rounded-[16px] overflow-hidden bg-white shadow-md">
+                <Image src={src} alt="Gusto di gelato Artigiano" fill className="object-cover" sizes="(max-width:1024px) 80vw, 460px" quality={92} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

@@ -3,14 +3,14 @@
 import { useEffect, useRef } from "react";
 
 const FRAME_COUNT = 40;
-const FPS = 14;
 const framePath = (i: number) =>
   `/images/hero-frames/ezgif-frame-${String(i + 1).padStart(3, "0")}.jpg`;
 
 /**
- * Looping frame animation for the hero (chocolate being poured), drawn on a
- * canvas with object-cover + a slight zoom to crop the baked letterbox bars.
- * Auto-plays continuously and pauses when the hero scrolls out of view.
+ * SCROLL-DRIVEN frame sequence for the hero (no autoplay). As the page scrolls
+ * horizontally past the hero panel (or vertically on mobile), the chocolate-pour
+ * frames are scrubbed 0 → 39. Drawn on a canvas (object-cover + slight zoom to
+ * crop the baked letterbox bars).
  */
 export function HeroSequence({ className = "" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -28,11 +28,7 @@ export function HeroSequence({ className = "" }: { className?: string }) {
       images.push(img);
     }
 
-    let frame = 0;
-    let visible = true;
-    let last = 0;
-    const interval = 1000 / FPS;
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let current = -1;
 
     const sizeCanvas = () => {
       const rect = canvas.getBoundingClientRect();
@@ -48,7 +44,7 @@ export function HeroSequence({ className = "" }: { className?: string }) {
       const ch = canvas.height;
       const ir = img.naturalWidth / img.naturalHeight;
       const cr = cw / ch;
-      const ZOOM = 1.2; // crop the baked-in letterbox bars
+      const ZOOM = 1.2;
       let dw: number, dh: number;
       if (ir > cr) {
         dh = ch * ZOOM;
@@ -60,42 +56,41 @@ export function HeroSequence({ className = "" }: { className?: string }) {
       ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
     };
 
-    const io = new IntersectionObserver(
-      (entries) => { visible = entries[0]?.isIntersecting ?? true; },
-      { threshold: 0.01 }
-    );
-    io.observe(canvas);
+    // 0 → 1 across the hero panel's own scroll distance (one viewport).
+    const progress = () => {
+      if (window.matchMedia("(min-width: 1024px)").matches) {
+        const track = document.querySelector<HTMLElement>(".hs-track");
+        const w = window.innerWidth || 1;
+        const x = track ? track.scrollLeft : 0;
+        return Math.max(0, Math.min(1, x / w));
+      }
+      const h = window.innerHeight || 1;
+      return Math.max(0, Math.min(1, window.scrollY / h));
+    };
 
     let raf = 0;
-    const loop = (t: number) => {
+    const loop = () => {
+      const idx = Math.round(progress() * (FRAME_COUNT - 1));
+      if (idx !== current) {
+        current = idx;
+        draw(idx);
+      }
       raf = requestAnimationFrame(loop);
-      if (!visible) return;
-      if (!last) last = t;
-      if (reduce) {
-        draw(0);
-        return;
-      }
-      if (t - last >= interval) {
-        last = t;
-        frame = (frame + 1) % FRAME_COUNT;
-        draw(frame);
-      }
     };
 
     const onResize = () => {
       sizeCanvas();
-      draw(frame);
+      draw(Math.max(0, current));
     };
 
     sizeCanvas();
-    images[0].onload = () => draw(frame);
+    images[0].onload = () => draw(current < 0 ? 0 : current);
     if (images[0].complete) draw(0);
     window.addEventListener("resize", onResize);
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
-      io.disconnect();
       window.removeEventListener("resize", onResize);
     };
   }, []);
