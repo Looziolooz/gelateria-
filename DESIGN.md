@@ -85,6 +85,6 @@ Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root
 | Date | Decision | Rationale |
 |------|----------|-----------|
 | 2026-06-16 | Bottega palette + Fraunces/Hanken/Pinyon adopted globally | Heritage artisan identity (from the "La Strega Nocciola" style guide, reused for Artigiano) |
-| 2026-06-16 | Horizontal-scroll storytelling homepage + pinned scroll hero | Faithful to the original gelatocrema.com locomotive-scroll structure; distinctive |
+| 2026-06-16 | Horizontal-scroll storytelling homepage + pinned scroll hero | Immersive locomotive-style storytelling; distinctive for an artisan gelato brand |
 | 2026-06-16 | `.btn-pill` primary CTA → rosso `#B23A2C`; gold stays for labels/accents | Clear click hierarchy: rosso = primary action, gold = brand accent |
 | 2026-06-16 | "Un'icona italiana" panel → petrol instead of gold bg | Cream-on-gold was low contrast; petrol fixes readability + gives the panel rhythm a dark beat |

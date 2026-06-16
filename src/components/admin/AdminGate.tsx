@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getSession, AUTH_EVENT } from "@/lib/admin-auth";
 import { AdminShell } from "@/components/admin/AdminShell";
-import { CremaLogo } from "@/components/icons";
+import { Emblem } from "@/components/icons";
 
 export function AdminGate({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -33,7 +33,7 @@ export function AdminGate({ children }: { children: React.ReactNode }) {
     return (
       <div className="min-h-screen grid place-items-center bg-[#f4f0e4]">
         <div className="flex flex-col items-center gap-3 text-secondary/70">
-          <CremaLogo className="h-12 w-auto text-primary animate-pulse" />
+          <Emblem className="h-12 w-auto text-primary animate-pulse" />
           <p className="text-sm">Caricamento…</p>
         </div>
       </div>

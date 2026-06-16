@@ -43,7 +43,6 @@ export function HomeBoutiquesPanel() {
             <p className="caviar text-[20px] md:text-[24px] t-u f-w-600 mb-2 leading-tight">{b.name}</p>
             <div className="flex flex-wrap gap-x-4 gap-y-1 caviar c-primary text-[13px] f-w-600 mb-2">
               <a href={b.mapUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">Come arrivare <ArrowUpRight size={12} /></a>
-              <a href={b.menuImage} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">Scopri il Menù <ArrowUpRight size={12} /></a>
             </div>
             <p className="caviar text-[13px] opacity-75">{b.hoursLabel}</p>
             <p className="caviar text-[13px] opacity-75 mb-3">Tel: {b.phone}</p>

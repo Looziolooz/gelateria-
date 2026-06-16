@@ -1,7 +1,7 @@
 import type { SVGProps } from "react";
 
 /** ARTIGIANO wordmark/badge — inline brand mark (scalloped cup with "ARTIGIANO"). */
-export function CremaLogo(props: SVGProps<SVGSVGElement>) {
+export function Emblem(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 100 92.854" aria-hidden {...props}>
       <path

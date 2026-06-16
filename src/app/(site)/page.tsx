@@ -48,7 +48,7 @@ export default function HomePage() {
       </section>
 
       {/* 2 — STORY + gelato gallery (independent slider with a visible scrollbar,
-            exactly like the original site's Swiper). */}
+            a horizontal slider with a visible scrollbar). */}
       <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary pt-28 lg:pt-0 pb-10 lg:pb-0 px-[5vw] lg:pr-0 lg:flex lg:flex-row lg:items-center lg:gap-10">
         <div className="lg:w-[33%] lg:shrink-0 flex flex-col lg:justify-center mb-8 lg:mb-0">
           <h2 className="title caviar fs-60 fs-m-30 t-lh-1 t-u mb-6">Il gelato:<br />una storia d&apos;amore</h2>

@@ -65,7 +65,6 @@ export default function BoutiquesPage() {
               <h2 className="title caviar fs-60 fs-m-30 t-u t-lh-1 mb-6">{b.name}</h2>
               <div className="flex flex-wrap gap-x-6 gap-y-2 caviar c-primary fs-16 f-w-600 mb-6">
                 <a href={b.mapUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">Come arrivare <ArrowUpRight size={14} /></a>
-                <a href={b.menuImage} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 hover:underline">Scopri il Menù <ArrowUpRight size={14} /></a>
               </div>
               <p className="flex items-center gap-2 caviar text-[15px] opacity-80 mb-1.5"><Clock size={16} className="c-primary" /> {b.hoursLabel}</p>
               <p className="flex items-center gap-2 caviar text-[15px] opacity-80 mb-8"><Phone size={16} className="c-primary" /> <a href={`tel:${b.phoneHref}`}>{b.phone}</a></p>

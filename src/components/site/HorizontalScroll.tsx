@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 /**
  * Desktop: lays children out as full-screen panels in a row and maps vertical
- * wheel/trackpad gestures to horizontal movement (like the original
+ * wheel/trackpad gestures to horizontal movement (maps vertical wheel to horizontal
  * locomotive-scroll horizontal homepage). Releases at the ends so the page can
  * still scroll vertically to the footer. Mobile/tablet (<1024px): falls back to
  * a normal vertical stack.

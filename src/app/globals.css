@@ -1,14 +1,14 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-/* Original gelatocrema.com utility framework (common.css, rem→px) */
+/* Bottega utility framework (atomic classes, rem→px) */
 @import "./theme-utils.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /* ============================================================
    Fonts — Fraunces / Pinyon Script / Hanken Grotesk via next/font.
-   The original gelatocrema utility classes are remapped to them below.
+   The ported utility classes are remapped to them below.
    ============================================================ */
 .caviar    { font-family: var(--font-fraunces), Georgia, "Times New Roman", serif !important; }
 .core      { font-family: var(--font-hanken), system-ui, sans-serif !important; }
@@ -21,7 +21,7 @@
   --color-primary: #ac7b40;     /* nocciola oro — etichette, accenti, bottoni */
   --color-secondary: #2c595e;   /* verde bottega (petrolio) — superfici scure, titoli, testo */
   --color-cream: #f6efe1;       /* panna — sfondo chiaro */
-  --color-gold: #e4d3b6;        /* mattone crema — sfondo caldo */
+  --color-gold: #e4d3b6;        /* mattone — sfondo caldo */
   --color-gold-soft: #efe3cc;   /* mattone chiaro */
   --color-ink: #2a2620;         /* bronzo — inchiostro */
   --color-cocoa: #6e4f33;       /* noce — testo attenuato */
@@ -94,7 +94,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 /* ============================================================
-   Typography helpers (mirrors gelatocrema theme conventions)
+   Typography helpers (atomic helper classes)
    ============================================================ */
 .site-wrap { width: min(92%, 1280px); margin-inline: auto; }
 .content-wrap { width: min(88%, 1000px); margin-inline: auto; }

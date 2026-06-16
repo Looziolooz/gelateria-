@@ -1,5 +1,5 @@
 // ============================================================
-// Shared site data — Artigiano Gelateria (clone)
+// Shared site data — Artigiano Gelateria
 // ============================================================
 
 export type City = "Milano" | "Roma";
@@ -21,7 +21,6 @@ export interface Boutique {
   closedWeekdays: number[];
   image: string;
   mapUrl: string;
-  menuImage: string;
 }
 
 export const BOUTIQUES: Boutique[] = [
@@ -38,7 +37,6 @@ export const BOUTIQUES: Boutique[] = [
     closedWeekdays: [],
     image: "/images/shop/shop1.png",
     mapUrl: "https://goo.gl/maps/sxsW2Am6EAdm5qRg6",
-    menuImage: "/images/menu/fiori-chiari.jpg",
   },
   {
     id: "procida",
@@ -53,7 +51,6 @@ export const BOUTIQUES: Boutique[] = [
     closedWeekdays: [],
     image: "/images/shop/shop2.png",
     mapUrl: "https://goo.gl/maps/XJzFTQLLNAciRwmN6",
-    menuImage: "/images/menu/procida.jpg",
   },
   {
     id: "piazza-napoli",
@@ -68,7 +65,6 @@ export const BOUTIQUES: Boutique[] = [
     closedWeekdays: [1],
     image: "/images/shop/shop3.png",
     mapUrl: "https://goo.gl/maps/qgchiJ5RWT6eGCQL9",
-    menuImage: "/images/menu/piazza-napoli.jpg",
   },
   {
     id: "via-giulia",
@@ -83,7 +79,6 @@ export const BOUTIQUES: Boutique[] = [
     closedWeekdays: [1],
     image: "/images/shop/interior.png",
     mapUrl: "https://maps.app.goo.gl/NoDUKbfKkY68tNw66",
-    menuImage: "/images/menu/via-giulia.jpg",
   },
   {
     id: "leone-iv",
@@ -98,7 +93,6 @@ export const BOUTIQUES: Boutique[] = [
     closedWeekdays: [],
     image: "/images/shop/shop2.png",
     mapUrl: "https://maps.app.goo.gl/13hAHPjbN42EAuvT9",
-    menuImage: "/images/menu/leone-iv.jpg",
   },
 ];
 

@@ -1,4 +1,4 @@
-import { CremaLogo } from "@/components/icons";
+import { Emblem } from "@/components/icons";
 
 export function PageHero({
   eyebrow,
@@ -11,7 +11,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative bg-gold-soft overflow-hidden">
-      <CremaLogo className="pointer-events-none absolute -right-10 -top-10 h-72 w-72 text-primary/5 hidden md:block" />
+      <Emblem className="pointer-events-none absolute -right-10 -top-10 h-72 w-72 text-primary/5 hidden md:block" />
       <div className="site-wrap pt-32 md:pt-44 pb-14 md:pb-20 text-center relative">
         <p className="eyebrow mb-4" data-reveal>{eyebrow}</p>
         <h1 className="display-title display-title--xl" data-reveal style={{ ["--reveal-delay" as string]: "80ms" }}>

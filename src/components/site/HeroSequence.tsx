@@ -40,6 +40,10 @@ export function HeroSequence({ className = "" }: { className?: string }) {
     const draw = (idx: number) => {
       const img = images[idx];
       if (!img || !img.complete || img.naturalWidth === 0) return;
+      // Canvas state resets on every resize, so (re)apply high-quality scaling
+      // here — this is what kills the blocky/pixelated upscaling on big screens.
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = "high";
       const cw = canvas.width;
       const ch = canvas.height;
       const ir = img.naturalWidth / img.naturalHeight;

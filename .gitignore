@@ -54,3 +54,6 @@ docs/compare/
 .gstack-start.log
 .devserver.log
 tsconfig.tsbuildinfo
+
+# Local agent tooling
+.claude/

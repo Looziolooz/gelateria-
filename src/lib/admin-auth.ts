@@ -3,8 +3,8 @@
 // ============================================================
 import { DEMO_CREDENTIALS } from "@/lib/admin-data";
 
-const KEY = "crema_admin_session";
-const EVENT = "crema-auth-change";
+const KEY = "artigiano_admin_session";
+const EVENT = "artigiano-auth-change";
 
 export interface AdminSession {
   email: string;

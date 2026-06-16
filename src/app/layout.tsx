@@ -22,7 +22,7 @@ const hanken = Hanken_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gelatocrema.com"),
+  metadataBase: new URL("https://artigianogelateria.it"),
   title: {
     default: "Artigiano Gelateria — Gelato per amore",
     template: "%s | ARTIGIANO",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "Artigiano Gelateria — Gelato per amore",
     description:
       "Alta gelateria artigianale a Milano e Roma. Oltre 50 stili di gelato. Ordina e ritira nella tua boutique.",
-    url: "https://gelatocrema.com/",
+    url: "https://artigianogelateria.it/",
     images: [{ url: "/images/shop/shop1.png", width: 1200, height: 630 }],
   },
 };

@@ -1,8 +1,8 @@
 {
-  "name": "gelateria-crema",
+  "name": "artigiano-gelateria",
   "version": "0.1.0",
   "private": true,
-  "description": "CREMA | Alta Gelateria — clone with pickup ordering and an admin CRM. Built with Next.js 16 and Tailwind CSS v4.",
+  "description": "Artigiano Gelateria — demo gelateria site with pickup ordering and an admin CRM. Built with Next.js 16 and Tailwind CSS v4.",
   "license": "UNLICENSED",
   "keywords": [
     "nextjs",
@@ -13,7 +13,7 @@
     "lenis"
   ],
   "engines": {
-    "node": ">=24"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "next dev",
