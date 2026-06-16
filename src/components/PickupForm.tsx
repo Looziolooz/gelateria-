@@ -13,7 +13,13 @@ import {
   generateSlots, isClosedOn, formatDateLong, upcomingDays,
   WEEKDAYS_SHORT_IT, MONTHS_IT,
 } from "@/lib/pickup";
+import { saveStoredBooking } from "@/lib/bookings-store";
 import { cn } from "@/lib/utils";
+
+/** Local YYYY-MM-DD (avoids the UTC shift of toISOString on local dates). */
+function toISODate(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
 
 const CITIES: City[] = ["Milano", "Roma"];
 
@@ -67,6 +73,24 @@ export function PickupForm() {
   }
 
   const canConfirm = boutique && format && flavors.length > 0 && slot && name.trim() && phone.trim();
+
+  function confirmBooking() {
+    if (!canConfirm) return;
+    // Persist to the demo store so the admin "Prenotazioni" view can show it.
+    saveStoredBooking({
+      id: `PRE-${String(Date.now()).slice(-5)}`,
+      customer: name.trim(),
+      phone: phone.trim(),
+      boutiqueLabel: `${boutique.city} · ${boutique.name}`,
+      format: format.name,
+      flavors: flavors.map((id) => flavorById(id)?.name ?? id),
+      date: toISODate(selectedDate),
+      time: slot,
+      total: format.price,
+      status: "Confermata",
+    });
+    setConfirmed(true);
+  }
 
   if (confirmed) {
     return (
@@ -297,7 +321,7 @@ export function PickupForm() {
         <button
           type="button"
           disabled={!canConfirm}
-          onClick={() => setConfirmed(true)}
+          onClick={confirmBooking}
           className={cn("w-full btn-pill", !canConfirm && "opacity-45 cursor-not-allowed")}
         >
           Conferma prenotazione

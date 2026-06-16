@@ -219,14 +219,16 @@ export interface Format {
   name: string;
   detail: string;
   maxFlavors: number;
+  /** indicative price (EUR) — used for the pickup booking total */
+  price: number;
 }
 
 export const FORMATS: Format[] = [
-  { id: "cono", name: "Cono", detail: "Cialda artigianale", maxFlavors: 3 },
-  { id: "coppetta", name: "Coppetta", detail: "Piccola / media / grande", maxFlavors: 3 },
-  { id: "vaschetta2", name: "Vaschetta 2 kg", detail: "Da asporto", maxFlavors: 4 },
-  { id: "vaschetta3", name: "Vaschetta 3 kg", detail: "Da asporto", maxFlavors: 5 },
-  { id: "vaschetta5", name: "Vaschetta 5 kg", detail: "Da asporto", maxFlavors: 6 },
+  { id: "cono", name: "Cono", detail: "Cialda artigianale", maxFlavors: 3, price: 5.0 },
+  { id: "coppetta", name: "Coppetta", detail: "Piccola / media / grande", maxFlavors: 3, price: 6.0 },
+  { id: "vaschetta2", name: "Vaschetta 2 kg", detail: "Da asporto", maxFlavors: 4, price: 24.0 },
+  { id: "vaschetta3", name: "Vaschetta 3 kg", detail: "Da asporto", maxFlavors: 5, price: 33.0 },
+  { id: "vaschetta5", name: "Vaschetta 5 kg", detail: "Da asporto", maxFlavors: 6, price: 55.0 },
 ];
 
 export function flavorById(id: string): Flavor | undefined {

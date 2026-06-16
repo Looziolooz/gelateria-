@@ -4,10 +4,15 @@ import { useEffect, useRef } from "react";
 
 /**
  * Desktop: lays children out as full-screen panels in a row and maps vertical
- * wheel/trackpad gestures to horizontal movement (maps vertical wheel to horizontal
- * locomotive-scroll horizontal homepage). Releases at the ends so the page can
- * still scroll vertically to the footer. Mobile/tablet (<1024px): falls back to
- * a normal vertical stack.
+ * wheel/trackpad gestures to horizontal movement (a horizontal-scroll
+ * locomotive-style homepage). Releases at the ends so the page can still scroll
+ * vertically to the footer. Mobile/tablet (<1024px): falls back to a normal
+ * vertical stack.
+ *
+ * Accessibility: the track is a focusable labelled region with keyboard
+ * navigation (←/→ and PageUp/PageDown move one panel, Home/End jump to the
+ * extremes). When the user prefers reduced motion, the eased scroll is replaced
+ * by an instant jump so there is no animated travel across the viewport.
  */
 export function HorizontalScroll({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -21,6 +26,8 @@ export function HorizontalScroll({ children }: { children: React.ReactNode }) {
     let running = false;
 
     const isDesktop = () => window.matchMedia("(min-width: 1024px)").matches;
+    const prefersReduced = () =>
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const tick = () => {
       const cur = el.scrollLeft;
@@ -35,6 +42,12 @@ export function HorizontalScroll({ children }: { children: React.ReactNode }) {
     };
 
     const start = () => {
+      // Reduced-motion: snap straight to the target, no animated travel.
+      if (prefersReduced()) {
+        el.scrollLeft = target;
+        running = false;
+        return;
+      }
       if (!running) {
         running = true;
         raf = requestAnimationFrame(tick);
@@ -77,15 +90,56 @@ export function HorizontalScroll({ children }: { children: React.ReactNode }) {
       start();
     };
 
+    const onKey = (e: KeyboardEvent) => {
+      if (!isDesktop()) return;
+      // Don't hijack arrow/Home/End while typing in a form control.
+      const t = e.target as HTMLElement | null;
+      if (
+        t &&
+        (t.tagName === "INPUT" ||
+          t.tagName === "TEXTAREA" ||
+          t.tagName === "SELECT" ||
+          t.isContentEditable)
+      )
+        return;
+
+      const max = el.scrollWidth - el.clientWidth;
+      const page = el.clientWidth; // one panel = one viewport
+      let handled = true;
+      switch (e.key) {
+        case "ArrowRight":
+        case "PageDown":
+          target = Math.min(max, target + page);
+          break;
+        case "ArrowLeft":
+        case "PageUp":
+          target = Math.max(0, target - page);
+          break;
+        case "Home":
+          target = 0;
+          break;
+        case "End":
+          target = max;
+          break;
+        default:
+          handled = false;
+      }
+      if (!handled) return;
+      e.preventDefault();
+      start();
+    };
+
     const onResize = () => {
       const max = el.scrollWidth - el.clientWidth;
       target = Math.max(0, Math.min(max, el.scrollLeft));
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
+    el.addEventListener("keydown", onKey);
     window.addEventListener("resize", onResize);
     return () => {
       el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("keydown", onKey);
       window.removeEventListener("resize", onResize);
       cancelAnimationFrame(raf);
     };
@@ -94,7 +148,10 @@ export function HorizontalScroll({ children }: { children: React.ReactNode }) {
   return (
     <div
       ref={ref}
-      className="hs-track lg:h-[100svh] lg:overflow-x-auto lg:overflow-y-hidden lg:flex lg:flex-nowrap"
+      role="region"
+      aria-label="Sezioni della pagina — usa le frecce ← → per scorrere in orizzontale"
+      tabIndex={0}
+      className="hs-track lg:h-[100svh] lg:overflow-x-auto lg:overflow-y-hidden lg:flex lg:flex-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-inset"
     >
       {children}
     </div>
