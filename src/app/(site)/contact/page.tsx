@@ -19,7 +19,7 @@ export default function ContactPage() {
         {/* RIGHT — illustration */}
         <div className="hidden lg:block">
           <Image
-            src="/images/shop/maestro.png"
+            src="/images/shop/maestro.webp"
             width={520}
             height={620}
             alt="Il maestro gelatiere Artigiano"

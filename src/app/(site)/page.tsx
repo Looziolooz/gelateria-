@@ -7,12 +7,12 @@ import { HomeMapPanel } from "@/components/site/HomeMapPanel";
 import { SiteFooter } from "@/components/SiteFooter";
 
 const GELATI = [
-  "/images/gusti/pistacchio.png",
-  "/images/gusti/nocciola.png",
-  "/images/gusti/stracciatella.png",
-  "/images/gusti/fragola.png",
-  "/images/gusti/zabaione.png",
-  "/images/gusti/stracciatella-board.png",
+  "/images/gusti/pistacchio.webp",
+  "/images/gusti/nocciola.webp",
+  "/images/gusti/stracciatella.webp",
+  "/images/gusti/fragola.webp",
+  "/images/gusti/zabaione.webp",
+  "/images/gusti/stracciatella-board.webp",
 ];
 
 const ICONS = [
@@ -100,7 +100,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="relative hidden lg:block h-[70vh]">
-            <Image src="/images/shop/maestro.png" alt="Gelato Artigiano" fill className="object-cover rounded-[18px]" sizes="45vw" quality={94} />
+            <Image src="/images/shop/maestro.webp" alt="Gelato Artigiano" fill className="object-cover rounded-[18px]" sizes="45vw" quality={94} />
             <Image src="/images/home/cono.png" alt="" width={260} height={260} className="absolute -bottom-6 -left-10 w-44 h-auto rotate-[8deg] drop-shadow-2xl" />
             <Image src="/images/home/coffee.png" alt="" width={200} height={200} className="absolute -top-6 -right-6 w-28 h-auto -rotate-6 drop-shadow-2xl" />
           </div>
@@ -122,7 +122,7 @@ export default function HomePage() {
           <div className="flex flex-col items-center gap-8">
             <a href="#" className="caviar b-primary c-white t-u inline-flex items-center rounded-full px-7 py-3 text-[14px] font-semibold hover:opacity-90">Libro degli Ingredienti</a>
             <div className="relative w-full max-w-5xl aspect-[21/7] rounded-[16px] overflow-hidden shadow-lg">
-              <Image src="/images/shop/interior.png" alt="Coni di gelato Artigiano" fill className="object-cover" sizes="90vw" quality={94} />
+              <Image src="/images/shop/interior.webp" alt="Coni di gelato Artigiano" fill className="object-cover" sizes="90vw" quality={94} />
             </div>
           </div>
         </div>

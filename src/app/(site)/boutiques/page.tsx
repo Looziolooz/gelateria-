@@ -17,7 +17,7 @@ export default function BoutiquesPage() {
     <HorizontalScroll>
       {/* 1 — HERO */}
       <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 h-[100svh] overflow-hidden">
-        <Image src="/images/shop/shop1.png" alt="" fill priority className="object-cover" sizes="100vw" quality={94} />
+        <Image src="/images/shop/shop1.webp" alt="" fill priority className="object-cover" sizes="100vw" quality={94} />
         <div className="absolute inset-0 bg-black/15" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
@@ -44,10 +44,10 @@ export default function BoutiquesPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[3/4] rounded-[16px] overflow-hidden shadow-lg mt-8">
-              <Image src="/images/shop/interior.png" alt="Interno boutique Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
+              <Image src="/images/shop/interior.webp" alt="Interno boutique Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
             </div>
             <div className="relative aspect-[3/4] rounded-[16px] overflow-hidden shadow-lg">
-              <Image src="/images/shop/shop2.png" alt="Packaging Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
+              <Image src="/images/shop/shop2.webp" alt="Packaging Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
             </div>
           </div>
         </div>

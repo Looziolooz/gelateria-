@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     description:
       "Alta gelateria artigianale a Milano e Roma. Oltre 50 stili di gelato. Ordina e ritira nella tua boutique.",
     url: "https://artigianogelateria.it/",
-    images: [{ url: "/images/shop/shop1.png", width: 1200, height: 630 }],
+    images: [{ url: "/images/shop/shop1.webp", width: 1200, height: 630 }],
   },
 };
 

@@ -35,7 +35,7 @@ export const BOUTIQUES: Boutique[] = [
     open: "12:00",
     close: "23:30",
     closedWeekdays: [],
-    image: "/images/shop/shop1.png",
+    image: "/images/shop/shop1.webp",
     mapUrl: "https://goo.gl/maps/sxsW2Am6EAdm5qRg6",
   },
   {
@@ -49,7 +49,7 @@ export const BOUTIQUES: Boutique[] = [
     open: "12:00",
     close: "23:30",
     closedWeekdays: [],
-    image: "/images/shop/shop2.png",
+    image: "/images/shop/shop2.webp",
     mapUrl: "https://goo.gl/maps/XJzFTQLLNAciRwmN6",
   },
   {
@@ -63,7 +63,7 @@ export const BOUTIQUES: Boutique[] = [
     open: "12:00",
     close: "23:30",
     closedWeekdays: [1],
-    image: "/images/shop/shop3.png",
+    image: "/images/shop/shop3.webp",
     mapUrl: "https://goo.gl/maps/qgchiJ5RWT6eGCQL9",
   },
   {
@@ -77,7 +77,7 @@ export const BOUTIQUES: Boutique[] = [
     open: "11:00",
     close: "22:00",
     closedWeekdays: [1],
-    image: "/images/shop/interior.png",
+    image: "/images/shop/interior.webp",
     mapUrl: "https://maps.app.goo.gl/NoDUKbfKkY68tNw66",
   },
   {
@@ -91,7 +91,7 @@ export const BOUTIQUES: Boutique[] = [
     open: "11:00",
     close: "23:00",
     closedWeekdays: [],
-    image: "/images/shop/shop2.png",
+    image: "/images/shop/shop2.webp",
     mapUrl: "https://maps.app.goo.gl/13hAHPjbN42EAuvT9",
   },
 ];
@@ -149,35 +149,35 @@ export const STILI: Stile[] = [
     title: "Ingredienti di finissima qualità",
     subtitle: "Stagionalità e ricercatezza",
     body: "Selezioniamo materie prime d'eccellenza, frutta di stagione e ingredienti ricercati provenienti dai migliori territori. Niente coloranti né conservanti artificiali: solo bontà autentica.",
-    image: "/images/gusti/pistacchio.png",
+    image: "/images/gusti/pistacchio.webp",
   },
   {
     number: "02",
     title: "Lavorazione artigianale",
     subtitle: "Tra innovazione e tradizione",
     body: "Ogni gelato nasce dalle mani dei nostri maestri gelatieri, che uniscono la sapienza della tradizione italiana alle tecniche più innovative dell'alta gelateria.",
-    image: "/images/gusti/nocciola.png",
+    image: "/images/gusti/nocciola.webp",
   },
   {
     number: "03",
     title: "Gusti classici e sorprendenti",
     subtitle: "Sapori senza tempo e abbinamenti innovativi",
     body: "Dai grandi classici della gelateria italiana agli abbinamenti più audaci: oltre 50 stili di gusto pensati per emozionare ad ogni assaggio.",
-    image: "/images/gusti/stracciatella.png",
+    image: "/images/gusti/stracciatella.webp",
   },
   {
     number: "04",
     title: "Cialda e cono express",
     subtitle: "Realizzati secondo i tuoi desideri",
     body: "Cialde e coni preparati al momento, caldi e fragranti, per accompagnare il tuo gelato con un tocco di croccantezza inconfondibile.",
-    image: "/images/gusti/fragola.png",
+    image: "/images/gusti/fragola.webp",
   },
   {
     number: "05",
     title: "Il servizio? Un piacere",
     subtitle: "Disponibilità e cortesia come vocazione",
     body: "Nelle nostre boutique l'accoglienza è parte dell'esperienza: un servizio attento e cortese per farti sentire a casa, ad ogni visita.",
-    image: "/images/gusti/zabaione.png",
+    image: "/images/gusti/zabaione.webp",
   },
 ];
 
@@ -193,12 +193,12 @@ export interface Flavor {
 }
 
 export const FLAVORS: Flavor[] = [
-  { id: "pistacchio", name: "Pistacchio di Bronte", image: "/images/gusti/pistacchio.png", color: "#9aa86a" },
-  { id: "nocciola", name: "Nocciola Piemonte", image: "/images/gusti/nocciola.png", color: "#b07d4f" },
-  { id: "stracciatella", name: "Stracciatella", image: "/images/gusti/stracciatella.png", color: "#e9e0cd" },
-  { id: "fragola", name: "Fragola", image: "/images/gusti/fragola.png", color: "#d96b7a", vegan: true },
-  { id: "zabaione", name: "Zabaione", image: "/images/gusti/zabaione.png", color: "#e8c87a" },
-  { id: "cioccolato", name: "Cioccolato Fondente", image: "/images/gusti/stracciatella-board.png", color: "#5b3a24", vegan: true },
+  { id: "pistacchio", name: "Pistacchio di Bronte", image: "/images/gusti/pistacchio.webp", color: "#9aa86a" },
+  { id: "nocciola", name: "Nocciola Piemonte", image: "/images/gusti/nocciola.webp", color: "#b07d4f" },
+  { id: "stracciatella", name: "Stracciatella", image: "/images/gusti/stracciatella.webp", color: "#e9e0cd" },
+  { id: "fragola", name: "Fragola", image: "/images/gusti/fragola.webp", color: "#d96b7a", vegan: true },
+  { id: "zabaione", name: "Zabaione", image: "/images/gusti/zabaione.webp", color: "#e8c87a" },
+  { id: "cioccolato", name: "Cioccolato Fondente", image: "/images/gusti/stracciatella-board.webp", color: "#5b3a24", vegan: true },
   { id: "fiordilatte", name: "Fiordilatte", color: "#f4ecd8" },
   { id: "caffe", name: "Caffè", color: "#6f4e37", vegan: true },
   { id: "mango", name: "Mango", color: "#e6a23c", vegan: true },
