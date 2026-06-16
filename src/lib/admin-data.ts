@@ -191,3 +191,44 @@ export function euro(n: number): string {
     maximumFractionDigits: n % 1 === 0 ? 0 : 2,
   }).format(n);
 }
+
+// ============================================================
+// Pickup bookings (prenotazioni) — hardcoded, mirror the /pickup flow
+// ============================================================
+export type BookingStatus = "Confermata" | "In preparazione" | "Pronta" | "Ritirata" | "Annullata";
+
+export interface Booking {
+  id: string;
+  customer: string;
+  phone: string;
+  boutiqueLabel: string;
+  format: string;
+  flavors: string[];
+  date: string; // YYYY-MM-DD
+  time: string; // HH:mm
+  total: number;
+  status: BookingStatus;
+}
+
+export const BOOKINGS: Booking[] = [
+  { id: "PRE-0142", customer: "Giulia Rossi", phone: "333 1042288", boutiqueLabel: "Milano · Fiori Chiari", format: "Coppetta", flavors: ["Pistacchio di Bronte", "Stracciatella", "Cioccolato Fondente"], date: "2026-06-16", time: "17:30", total: 6.5, status: "In preparazione" },
+  { id: "PRE-0141", customer: "Marco Verdi", phone: "347 9981120", boutiqueLabel: "Milano · Da Procida", format: "Cono", flavors: ["Nocciola Piemonte", "Caffè"], date: "2026-06-16", time: "18:00", total: 4.5, status: "Confermata" },
+  { id: "PRE-0140", customer: "Elena Conti", phone: "320 5567710", boutiqueLabel: "Roma · Via Giulia", format: "Vaschetta 2 kg", flavors: ["Zabaione", "Fragola", "Fiordilatte", "Nocciola Piemonte"], date: "2026-06-16", time: "16:15", total: 24.0, status: "Pronta" },
+  { id: "PRE-0139", customer: "Chiara Galli", phone: "348 2290871", boutiqueLabel: "Roma · Leone IV", format: "Coppetta", flavors: ["Cioccolato Fondente", "Stracciatella"], date: "2026-06-16", time: "19:00", total: 5.0, status: "Confermata" },
+  { id: "PRE-0138", customer: "Davide Ferri", phone: "339 7741203", boutiqueLabel: "Milano · Fiori Chiari", format: "Cono", flavors: ["Fragola", "Fiordilatte", "Pistacchio di Bronte"], date: "2026-06-16", time: "20:30", total: 5.0, status: "Confermata" },
+  { id: "PRE-0137", customer: "Sara Lombardi", phone: "347 3320148", boutiqueLabel: "Milano · Piazza Napoli", format: "Vaschetta 3 kg", flavors: ["Pistacchio di Bronte", "Cioccolato Fondente", "Stracciatella", "Limone di Sicilia", "Fragola"], date: "2026-06-15", time: "19:20", total: 33.0, status: "Ritirata" },
+  { id: "PRE-0136", customer: "Andrea Costa", phone: "340 1190576", boutiqueLabel: "Roma · Via Giulia", format: "Coppetta", flavors: ["Zabaione", "Caffè", "Nocciola Piemonte"], date: "2026-06-15", time: "16:00", total: 6.0, status: "Annullata" },
+  { id: "PRE-0135", customer: "Martina Russo", phone: "329 4471882", boutiqueLabel: "Milano · Da Procida", format: "Vaschetta 5 kg", flavors: ["Nocciola Piemonte", "Zabaione", "Stracciatella", "Cioccolato Fondente", "Mango", "Pistacchio di Bronte"], date: "2026-06-17", time: "11:30", total: 55.0, status: "Confermata" },
+  { id: "PRE-0134", customer: "Paolo Greco", phone: "338 7712095", boutiqueLabel: "Roma · Leone IV", format: "Cono", flavors: ["Limone di Sicilia", "Fragola"], date: "2026-06-17", time: "18:45", total: 4.0, status: "Confermata" },
+];
+
+export const BOOKING_KPIS = (() => {
+  const today = "2026-06-16";
+  const todayB = BOOKINGS.filter((b) => b.date === today && b.status !== "Annullata");
+  return {
+    oggi: todayB.length,
+    inAttesa: BOOKINGS.filter((b) => b.status === "Confermata" || b.status === "In preparazione").length,
+    pronte: BOOKINGS.filter((b) => b.status === "Pronta").length,
+    valoreOggi: todayB.reduce((s, b) => s + b.total, 0),
+  };
+})();

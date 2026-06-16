@@ -1,25 +1,27 @@
 import Link from "next/link";
 import {
-  Banknote, ShoppingBag, Receipt, Boxes, TrendingUp, AlertTriangle, ArrowRight,
+  Banknote, ShoppingBag, Receipt, Boxes, TrendingUp, AlertTriangle, ArrowRight, CalendarCheck, IceCream,
 } from "lucide-react";
 import {
   KPIS, REVENUE_MONTHLY, CHANNEL_SPLIT, TOP_FLAVORS, ORDERS,
-  INVENTORY_WITH_STATUS, euro,
+  INVENTORY_WITH_STATUS, BOOKINGS, BOOKING_KPIS, euro,
 } from "@/lib/admin-data";
 import { Card, KpiCard, BarChart, BarList, Donut, StatusBadge } from "@/components/admin/ui";
 
 export default function AdminDashboard() {
   const recent = ORDERS.slice(0, 6);
+  const recentBookings = BOOKINGS.slice(0, 5);
   const lowStock = INVENTORY_WITH_STATUS.filter((i) => i.status !== "Disponibile");
 
   return (
     <div className="space-y-6">
       {/* KPIs */}
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         <KpiCard label="Fatturato oggi" value={euro(KPIS.fatturatoOggi)} sub="vs ieri" trend="+8%" icon={<Banknote size={18} />} />
+        <KpiCard label="Prenotazioni oggi" value={String(BOOKING_KPIS.oggi)} sub={`${BOOKING_KPIS.pronte} pronte`} icon={<CalendarCheck size={18} />} accent="secondary" />
         <KpiCard label="Ordini oggi" value={String(KPIS.ordiniOggi)} sub={`${KPIS.pickupOggi} via pickup`} icon={<ShoppingBag size={18} />} accent="secondary" />
         <KpiCard label="Scontrino medio" value={euro(KPIS.scontrinoMedio)} sub="oggi" icon={<Receipt size={18} />} accent="green" />
-        <KpiCard label="Merce sotto scorta" value={String(KPIS.lowStock)} sub="prodotti da riordinare" icon={<AlertTriangle size={18} />} accent="primary" />
+        <KpiCard label="Merce sotto scorta" value={String(KPIS.lowStock)} sub="da riordinare" icon={<AlertTriangle size={18} />} accent="primary" />
       </div>
 
       {/* Charts row */}
@@ -60,6 +62,29 @@ export default function AdminDashboard() {
           <BarList data={TOP_FLAVORS.map((f) => ({ label: f.name, value: f.scoops }))} format={(v) => `${v.toLocaleString("it-IT")}`} />
         </Card>
       </div>
+
+      {/* Recent pickup bookings */}
+      <Card title="Prenotazioni pickup recenti" subtitle="Ritiri prenotati dal sito"
+        action={<Link href="/admin/prenotazioni" className="text-sm font-semibold text-primary inline-flex items-center gap-1">Tutte <ArrowRight size={14} /></Link>}>
+        <div className="overflow-x-auto -mx-1">
+          <table className="w-full text-sm">
+            <tbody>
+              {recentBookings.map((b) => (
+                <tr key={b.id} className="border-b border-secondary/5 last:border-0">
+                  <td className="py-2.5 pr-3 font-semibold text-secondary whitespace-nowrap">{b.id}</td>
+                  <td className="py-2.5 pr-3 text-secondary">{b.customer}</td>
+                  <td className="py-2.5 pr-3 hidden sm:table-cell whitespace-nowrap">
+                    <span className="inline-flex items-center gap-1.5 text-secondary/70"><IceCream size={14} className="text-primary" /> {b.format}</span>
+                  </td>
+                  <td className="py-2.5 pr-3 text-secondary/60 hidden lg:table-cell whitespace-nowrap">{b.boutiqueLabel}</td>
+                  <td className="py-2.5 pr-3 text-secondary/60 whitespace-nowrap">{b.date.slice(8)}/{b.date.slice(5, 7)} · {b.time}</td>
+                  <td className="py-2.5 text-right"><StatusBadge status={b.status} /></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Card>
 
       {/* Low stock alert */}
       {lowStock.length > 0 && (

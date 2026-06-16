@@ -51,7 +51,7 @@ export function HomeBoutiquesPanel() {
               <ShoppingBag size={13} /> Ordina e ritira
             </Link>
             <div className="relative flex-1 min-h-[180px] rounded-[12px] overflow-hidden">
-              <Image src={b.image} alt={b.name} fill className="object-cover" sizes="(max-width:1024px) 50vw, 30vw" />
+              <Image src={b.image} alt={b.name} fill className="object-cover" sizes="(max-width:1024px) 50vw, 30vw" quality={94} />
             </div>
           </article>
         ))}

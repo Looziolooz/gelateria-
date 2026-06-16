@@ -165,10 +165,14 @@ export function Donut({ data }: { data: { channel: string; value: number }[] }) 
 /* ---------------- Status badge ---------------- */
 const STATUS_STYLES: Record<string, string> = {
   Nuovo: "bg-blue-500/12 text-blue-600",
+  Confermata: "bg-blue-500/12 text-blue-600",
   "In preparazione": "bg-amber-500/15 text-amber-600",
   Pronto: "bg-emerald-500/15 text-emerald-600",
+  Pronta: "bg-emerald-500/15 text-emerald-600",
   Ritirato: "bg-secondary/10 text-secondary/70",
+  Ritirata: "bg-secondary/10 text-secondary/70",
   Annullato: "bg-red-500/12 text-red-600",
+  Annullata: "bg-red-500/12 text-red-600",
   Disponibile: "bg-emerald-500/15 text-emerald-600",
   "In esaurimento": "bg-amber-500/15 text-amber-600",
   Esaurito: "bg-red-500/12 text-red-600",

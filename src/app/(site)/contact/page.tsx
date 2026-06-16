@@ -22,8 +22,9 @@ export default function ContactPage() {
             src="/images/shop/maestro.png"
             width={520}
             height={620}
-            alt="Coppetta Artigiano"
-            className="w-full max-w-md mx-auto h-auto"
+            alt="Il maestro gelatiere Artigiano"
+            className="w-full max-w-md mx-auto h-auto rounded-[18px]"
+            quality={95}
           />
         </div>
       </div>

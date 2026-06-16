@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LayoutDashboard } from "lucide-react";
 import { SOCIAL, COMPANY } from "@/lib/data";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { BrandLogo } from "@/components/BrandLogo";
@@ -24,6 +25,9 @@ export function SiteFooter() {
             ©{COMPANY.year} — {COMPANY.legalName}. {COMPANY.address}. {COMPANY.vat}
           </p>
           <div className="flex items-center gap-5">
+            <Link href="/admin" className="inline-flex items-center gap-1.5 rounded-full bg-cream/10 px-3 py-1.5 text-cream/90 hover:bg-cream/20 transition-colors">
+              <LayoutDashboard size={14} /> Gestionale
+            </Link>
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
             <a href={SOCIAL.instagram} target="_blank" rel="noreferrer" aria-label="Instagram">

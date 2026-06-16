@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
-  LayoutDashboard, ClipboardList, Boxes, TrendingUp, CalendarDays,
+  LayoutDashboard, ClipboardList, Boxes, TrendingUp, CalendarDays, CalendarCheck,
   LogOut, Menu, X, ExternalLink,
 } from "lucide-react";
 import { ConeGlyph } from "@/components/icons";
@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { href: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
+  { href: "/admin/prenotazioni", label: "Prenotazioni", icon: CalendarCheck },
   { href: "/admin/ordini", label: "Ordini", icon: ClipboardList },
   { href: "/admin/merce", label: "Merce & Magazzino", icon: Boxes },
   { href: "/admin/fatturato", label: "Fatturato", icon: TrendingUp },
@@ -21,6 +22,7 @@ const NAV = [
 
 const TITLES: Record<string, string> = {
   "/admin": "Dashboard",
+  "/admin/prenotazioni": "Prenotazioni Pickup",
   "/admin/ordini": "Ordini",
   "/admin/merce": "Merce & Magazzino",
   "/admin/fatturato": "Fatturato",

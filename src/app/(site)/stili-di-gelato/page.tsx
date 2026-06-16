@@ -15,7 +15,7 @@ export default function StiliPage() {
     <HorizontalScroll>
       {/* 1 — HERO */}
       <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 h-[100svh] overflow-hidden">
-        <Image src="/images/shop/interior.png" alt="" fill priority className="object-cover" sizes="100vw" />
+        <Image src="/images/shop/interior.png" alt="" fill priority className="object-cover" sizes="100vw" quality={94} />
         <div className="absolute inset-0 bg-black/25" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
@@ -39,7 +39,7 @@ export default function StiliPage() {
               <p className="caviar text-[15px] leading-relaxed opacity-80 max-w-sm">{s.body}</p>
             </div>
             <div className="lg:shrink-0 relative w-full lg:w-[330px] aspect-[3/4] lg:aspect-auto lg:h-[68vh] rounded-[200px] overflow-hidden shadow-xl mb-12 lg:mb-0 lg:last:mr-[5vw]">
-              <Image src={s.image} alt={s.title} fill className="object-cover" sizes="330px" />
+              <Image src={s.image} alt={s.title} fill className="object-cover" sizes="330px" quality={94} />
             </div>
           </div>
         ))}

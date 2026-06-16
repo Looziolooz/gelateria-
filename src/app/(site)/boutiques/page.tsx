@@ -17,7 +17,7 @@ export default function BoutiquesPage() {
     <HorizontalScroll>
       {/* 1 — HERO */}
       <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 h-[100svh] overflow-hidden">
-        <Image src="/images/shop/shop1.png" alt="" fill priority className="object-cover" sizes="100vw" />
+        <Image src="/images/shop/shop1.png" alt="" fill priority className="object-cover" sizes="100vw" quality={94} />
         <div className="absolute inset-0 bg-black/15" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
         <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
@@ -44,10 +44,10 @@ export default function BoutiquesPage() {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="relative aspect-[3/4] rounded-[16px] overflow-hidden shadow-lg mt-8">
-              <Image src="/images/shop/interior.png" alt="Interno boutique Artigiano" fill className="object-cover" sizes="25vw" />
+              <Image src="/images/shop/interior.png" alt="Interno boutique Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
             </div>
             <div className="relative aspect-[3/4] rounded-[16px] overflow-hidden shadow-lg">
-              <Image src="/images/shop/shop2.png" alt="Packaging Artigiano" fill className="object-cover" sizes="25vw" />
+              <Image src="/images/shop/shop2.png" alt="Packaging Artigiano" fill className="object-cover" sizes="25vw" quality={94} />
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function BoutiquesPage() {
         <section key={b.id} className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary overflow-hidden flex items-stretch">
           <div className="w-full grid lg:grid-cols-[1.25fr_1fr] gap-0 lg:gap-10 items-stretch">
             <div className="relative min-h-[42vh] lg:min-h-0 order-1">
-              <Image src={b.image} alt={b.name} fill className="object-cover" sizes="(max-width:1024px) 100vw, 55vw" />
+              <Image src={b.image} alt={b.name} fill className="object-cover" sizes="(max-width:1024px) 100vw, 55vw" quality={94} />
             </div>
             <div className="order-2 flex flex-col justify-center pt-10 lg:pt-24 pb-12 px-[5vw] lg:pl-0 lg:pr-[5vw]">
               <p className="core c-primary t-u fs-16 mb-3" style={{ letterSpacing: "0.14em" }}>{b.city}</p>

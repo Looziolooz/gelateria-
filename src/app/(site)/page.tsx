@@ -24,22 +24,27 @@ const ICONS = [
 export default function HomePage() {
   return (
     <HorizontalScroll>
-      {/* 1 — HERO (scroll-driven frame sequence) */}
-      <section
-        className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 h-[100svh] overflow-hidden bg-[#1c1510] bg-cover bg-center"
-        style={{ backgroundImage: "url(/images/hero-frames/ezgif-frame-001.jpg)" }}
-      >
-        <HeroSequence className="absolute inset-0 h-full w-full" />
-        <div className="absolute inset-0 bg-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-        <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
-          <p className="core c-white t-u fs-16 fs-m-12 mb-4" style={{ letterSpacing: "0.22em" }}>Artigiano Gelateria</p>
-          <h1 className="title caviar fs-120 fs-m-50 t-lh-1 t-u c-white">Gelato per amore</h1>
+      {/* 1 — HERO (scroll-driven frame sequence, PINNED while scrubbing).
+            On desktop the section is 2 viewports wide and the visual is sticky,
+            so the hero stays in place for one viewport of scroll while the 40
+            chocolate frames play, then it scrolls away to the story. */}
+      <section className="relative w-full h-[100svh] lg:w-[200vw] lg:h-[100svh] lg:shrink-0">
+        <div
+          className="lg:sticky lg:left-0 lg:top-0 relative h-[100svh] w-full lg:w-screen overflow-hidden bg-[#1c1510] bg-cover bg-center"
+          style={{ backgroundImage: "url(/images/hero-frames/ezgif-frame-001.jpg)" }}
+        >
+          <HeroSequence className="absolute inset-0 h-full w-full" />
+          <div className="absolute inset-0 bg-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+          <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
+            <p className="core c-white t-u fs-16 fs-m-12 mb-4" style={{ letterSpacing: "0.22em" }}>Artigiano Gelateria</p>
+            <h1 className="title caviar fs-120 fs-m-50 t-lh-1 t-u c-white">Gelato per amore</h1>
+          </div>
+          <span className="absolute bottom-0 right-0 h-[120px] w-[120px] md:h-[150px] md:w-[150px] b-primary c-white flex flex-col items-center justify-center gap-1 caviar t-u f-w-600 text-[13px]">
+            SCROLL
+            <span className="block h-3 w-3 border-b-2 border-r-2 border-white rotate-45 -mt-0.5 animate-bounce" />
+          </span>
         </div>
-        <span className="absolute bottom-0 right-0 h-[120px] w-[120px] md:h-[150px] md:w-[150px] b-primary c-white flex flex-col items-center justify-center gap-1 caviar t-u f-w-600 text-[13px]">
-          SCROLL
-          <span className="block h-3 w-3 border-b-2 border-r-2 border-white rotate-45 -mt-0.5 animate-bounce" />
-        </span>
       </section>
 
       {/* 2 — STORY + gelato gallery (independent slider with a visible scrollbar,
@@ -95,7 +100,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="relative hidden lg:block h-[70vh]">
-            <Image src="/images/shop/maestro.png" alt="Gelato Artigiano" fill className="object-cover rounded-[18px]" sizes="45vw" />
+            <Image src="/images/shop/maestro.png" alt="Gelato Artigiano" fill className="object-cover rounded-[18px]" sizes="45vw" quality={94} />
             <Image src="/images/home/cono.png" alt="" width={260} height={260} className="absolute -bottom-6 -left-10 w-44 h-auto rotate-[8deg] drop-shadow-2xl" />
             <Image src="/images/home/coffee.png" alt="" width={200} height={200} className="absolute -top-6 -right-6 w-28 h-auto -rotate-6 drop-shadow-2xl" />
           </div>
@@ -117,7 +122,7 @@ export default function HomePage() {
           <div className="flex flex-col items-center gap-8">
             <a href="#" className="caviar b-primary c-white t-u inline-flex items-center rounded-full px-7 py-3 text-[14px] font-semibold hover:opacity-90">Libro degli Ingredienti</a>
             <div className="relative w-full max-w-5xl aspect-[21/7] rounded-[16px] overflow-hidden shadow-lg">
-              <Image src="/images/shop/interior.png" alt="Coni di gelato Artigiano" fill className="object-cover" sizes="90vw" />
+              <Image src="/images/shop/interior.png" alt="Coni di gelato Artigiano" fill className="object-cover" sizes="90vw" quality={94} />
             </div>
           </div>
         </div>
