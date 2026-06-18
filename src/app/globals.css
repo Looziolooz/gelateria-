@@ -69,6 +69,25 @@
 /* ============================================================
    Smooth scroll (Lenis)
    ============================================================ */
+/* Base interaction tokens */
+button:not(:disabled),
+a,
+[role="button"],
+summary,
+label[tabindex],
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  cursor: pointer;
+}
+button:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
@@ -186,9 +205,103 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
 }
 .qty-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
-/* horizontal full-screen scroller (homepage) — hide native scrollbar */
+/* horizontal full-screen scroller — hide native scrollbar */
 .hs-track { scrollbar-width: none; -ms-overflow-style: none; }
 .hs-track::-webkit-scrollbar { display: none; height: 0; }
+
+/* Touch devices scroll the track natively — add snap so panels settle
+   intentionally. Pointer/wheel devices keep the JS-eased engine (no snap,
+   so the 2-viewport pinned hero can scrub freely). */
+@media (hover: none) and (pointer: coarse) {
+  .hs-track { scroll-snap-type: x proximity; scroll-padding: 0; }
+  .hs-track > section { scroll-snap-align: start; scroll-snap-stop: normal; }
+}
+
+/* ============================================================
+   Embellishments — bottega texture & framing
+   ============================================================ */
+
+/* Film / paper grain — tactile warmth on dark cinematic panels.
+   Layered above background, below content (give content z >= 10).
+   NOTE: the host element must establish its own positioning context (it always
+   does in practice — sticky hero, relative panels, fixed overlay). `.grain` must
+   NOT set `position` itself: as unlayered CSS it would override Tailwind's
+   layered `sticky`/`fixed` utilities and break pinning/overlays. */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+/* Gold hairline rule — slim ornamental divider. */
+.rule-gold {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(172, 123, 64, 0.55) 18%,
+    rgba(172, 123, 64, 0.55) 82%,
+    transparent
+  );
+}
+.rule-gold--center {
+  width: 64px;
+  margin-inline: auto;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+}
+
+/* Editorial photo frame + warm grade so every photo reads as one set.
+   Wrap an image: <span class="figure-frame photo-grade">…<Image/>…</span> */
+.figure-frame {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow:
+    0 1px 0 rgba(246, 239, 225, 0.5) inset,
+    0 18px 48px -22px rgba(31, 40, 30, 0.55);
+  outline: 1px solid rgba(172, 123, 64, 0.28);
+  outline-offset: -1px;
+}
+.photo-grade { position: relative; isolation: isolate; }
+.photo-grade::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background:
+    radial-gradient(125% 125% at 50% 28%, transparent 52%, rgba(31, 40, 30, 0.34) 100%),
+    linear-gradient(180deg, rgba(172, 123, 64, 0.1), rgba(44, 89, 94, 0.12));
+}
+/* replayable entrance for dynamic content (re-mounts on state change, e.g.
+   city toggle) where the IntersectionObserver can't re-observe new nodes */
+@keyframes fade-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+.fade-rise { animation: fade-rise 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+/* gentle horizontal nudge for the hero scroll cue */
+@keyframes cue-nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(6px); }
+}
+.cue-nudge { animation: cue-nudge 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grain::after { display: none; }
+  .cue-nudge { animation: none; }
+  .fade-rise { animation: none; }
+}
 
 /* horizontal slider scrollbar (story gallery) — nocciola thumb on a faint track.
    Note: don't set scrollbar-width/color, or Chrome ignores ::-webkit and the

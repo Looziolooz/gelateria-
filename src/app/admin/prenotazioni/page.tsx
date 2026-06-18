@@ -2,13 +2,16 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { CalendarCheck, Clock, CheckCircle2, Banknote, IceCream, Sparkles } from "lucide-react";
-import { BOOKINGS, euro, type Booking } from "@/lib/admin-data";
+import { getBookings, scopeLabel, euro, type Booking } from "@/lib/admin-data";
 import { loadStoredBookings, BOOKINGS_EVENT } from "@/lib/bookings-store";
+import { useAdminScope } from "@/components/admin/AdminScope";
 import { Card, KpiCard, StatusBadge } from "@/components/admin/ui";
 
 const DEMO_TODAY = "2026-06-16";
 
 export default function PrenotazioniPage() {
+  const { scope } = useAdminScope();
+
   // Bookings created from the public /pickup flow (localStorage). Loaded after
   // mount so SSR and the first client render agree (avoids hydration mismatch).
   const [live, setLive] = useState<Booking[]>([]);
@@ -25,7 +28,8 @@ export default function PrenotazioniPage() {
   }, []);
 
   const liveIds = useMemo(() => new Set(live.map((b) => b.id)), [live]);
-  const all = useMemo(() => [...live, ...BOOKINGS], [live]);
+  // Scoped to the active gelateria (or all three) — never mixes shops.
+  const all = useMemo(() => getBookings(scope, live), [live, scope]);
 
   const kpis = useMemo(() => {
     // Count "today" as either the demo anchor or the real current day, so a
@@ -51,7 +55,7 @@ export default function PrenotazioniPage() {
         <KpiCard label="Valore oggi" value={euro(kpis.valoreOggi)} sub="ritiri di oggi" icon={<Banknote size={18} />} />
       </div>
 
-      <Card title="Prenotazioni pickup" subtitle="Ordini e ritiri dalla pagina /pickup · dati dimostrativi">
+      <Card title="Prenotazioni pickup" subtitle={`${scopeLabel(scope)} · ritiri dalla pagina /pickup · dati dimostrativi`}>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>

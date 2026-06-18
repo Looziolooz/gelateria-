@@ -1,5 +1,8 @@
+"use client";
+
 import { CalendarDays, ShoppingBag, Banknote, Star } from "lucide-react";
-import { CALENDAR_EVENTS, euro } from "@/lib/admin-data";
+import { getCalendar, euro, type CalendarEvent } from "@/lib/admin-data";
+import { useAdminScope } from "@/components/admin/AdminScope";
 import { Card, KpiCard } from "@/components/admin/ui";
 import { cn } from "@/lib/utils";
 
@@ -9,8 +12,11 @@ const DAYS_IN_MONTH = 30; // June 2026
 const LEADING_BLANKS = 0; // June 1, 2026 is a Monday
 
 export default function CalendarioPage() {
-  const byDay = new Map<number, (typeof CALENDAR_EVENTS)[number]>();
-  for (const ev of CALENDAR_EVENTS) {
+  const { scope } = useAdminScope();
+  const calendar = getCalendar(scope);
+
+  const byDay = new Map<number, CalendarEvent>();
+  for (const ev of calendar) {
     const day = Number(ev.date.slice(8, 10));
     byDay.set(day, ev);
   }
@@ -20,19 +26,19 @@ export default function CalendarioPage() {
     ...Array.from({ length: DAYS_IN_MONTH }, (_, i) => i + 1),
   ];
 
-  const weekPickups = CALENDAR_EVENTS.filter((e) => {
+  const weekPickups = calendar.filter((e) => {
     const d = Number(e.date.slice(8, 10));
     return d >= 15 && d <= 21;
   }).reduce((s, e) => s + e.pickups, 0);
-  const busiest = [...CALENDAR_EVENTS].sort((a, b) => b.pickups - a.pickups)[0];
-  const events = CALENDAR_EVENTS.filter((e) => e.note && e.note !== "Oggi");
+  const busiest = [...calendar].sort((a, b) => b.pickups - a.pickups)[0];
+  const events = calendar.filter((e) => e.note && e.note !== "Oggi");
 
   return (
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-3">
         <KpiCard label="Pickup questa settimana" value={String(weekPickups)} sub="15 – 21 giugno" icon={<ShoppingBag size={18} />} />
         <KpiCard label="Giorno più affollato" value={`${Number(busiest.date.slice(8, 10))} giu`} sub={`${busiest.pickups} pickup`} icon={<Star size={18} />} accent="secondary" />
-        <KpiCard label="Incasso pickup settimana" value={euro(CALENDAR_EVENTS.filter((e) => { const d = Number(e.date.slice(8,10)); return d >= 15 && d <= 21; }).reduce((s, e) => s + e.revenue, 0))} sub="da ritiri" icon={<Banknote size={18} />} accent="green" />
+        <KpiCard label="Incasso pickup settimana" value={euro(calendar.filter((e) => { const d = Number(e.date.slice(8,10)); return d >= 15 && d <= 21; }).reduce((s, e) => s + e.revenue, 0))} sub="da ritiri" icon={<Banknote size={18} />} accent="green" />
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">

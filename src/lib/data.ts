@@ -2,7 +2,7 @@
 // Shared site data — Artigiano Gelateria
 // ============================================================
 
-export type City = "Milano" | "Roma";
+export type City = "Cosenza" | "Catanzaro" | "Lamezia Terme";
 
 export interface Boutique {
   id: string;
@@ -25,12 +25,12 @@ export interface Boutique {
 
 export const BOUTIQUES: Boutique[] = [
   {
-    id: "fiori-chiari",
-    name: "Via Fiori Chiari 16",
-    city: "Milano",
-    address: "Via Fiori Chiari 16, 20121 Milano",
-    phone: "(+39) 02 688 566 33",
-    phoneHref: "+390268856633",
+    id: "cosenza",
+    name: "Corso Mazzini 120",
+    city: "Cosenza",
+    address: "Corso Mazzini 120, 87100 Cosenza",
+    phone: "(+39) 0984 123 456",
+    phoneHref: "+390984123456",
     hoursLabel: "Lunedì – Domenica · 12:00 – 23:30",
     open: "12:00",
     close: "23:30",
@@ -39,60 +39,32 @@ export const BOUTIQUES: Boutique[] = [
     mapUrl: "https://goo.gl/maps/sxsW2Am6EAdm5qRg6",
   },
   {
-    id: "procida",
-    name: "Via G. Da Procida 29",
-    city: "Milano",
-    address: "Via G. Da Procida 29, 20149 Milano",
-    phone: "(+39) 02 392 851 78",
-    phoneHref: "+390239285178",
-    hoursLabel: "Lunedì – Domenica · 12:00 – 23:30",
-    open: "12:00",
-    close: "23:30",
-    closedWeekdays: [],
-    image: "/images/shop/shop2.webp",
-    mapUrl: "https://goo.gl/maps/XJzFTQLLNAciRwmN6",
-  },
-  {
-    id: "piazza-napoli",
-    name: "Piazza Napoli 15",
-    city: "Milano",
-    address: "Piazza Napoli 15, 20146 Milano",
-    phone: "(+39) 02 458 962 52",
-    phoneHref: "+390245896252",
+    id: "catanzaro",
+    name: "Via Milano 45",
+    city: "Catanzaro",
+    address: "Via Milano 45, 88100 Catanzaro",
+    phone: "(+39) 0961 789 012",
+    phoneHref: "+390961789012",
     hoursLabel: "Martedì – Domenica · 12:00 – 23:30 · Chiuso il Lunedì",
     open: "12:00",
     close: "23:30",
     closedWeekdays: [1],
-    image: "/images/shop/shop3.webp",
-    mapUrl: "https://goo.gl/maps/qgchiJ5RWT6eGCQL9",
+    image: "/images/shop/shop2.webp",
+    mapUrl: "https://goo.gl/maps/XJzFTQLLNAciRwmN6",
   },
   {
-    id: "via-giulia",
-    name: "Via Giulia 18",
-    city: "Roma",
-    address: "Via Giulia 18, 00186 Roma",
-    phone: "(+39) 06 688 058 51",
-    phoneHref: "+390668805851",
-    hoursLabel: "Martedì – Domenica · 11:00 – 22:00 · Chiuso il Lunedì",
-    open: "11:00",
-    close: "22:00",
-    closedWeekdays: [1],
-    image: "/images/shop/interior.webp",
-    mapUrl: "https://maps.app.goo.gl/NoDUKbfKkY68tNw66",
-  },
-  {
-    id: "leone-iv",
-    name: "Via Leone IV 62a",
-    city: "Roma",
-    address: "Via Leone IV 62a, 00192 Roma",
-    phone: "(+39) 06 429 170 05",
-    phoneHref: "+390642917005",
+    id: "lamezia",
+    name: "Via Marconi 28",
+    city: "Lamezia Terme",
+    address: "Via Marconi 28, 88046 Lamezia Terme",
+    phone: "(+39) 0968 345 678",
+    phoneHref: "+390968345678",
     hoursLabel: "Lunedì – Domenica · 11:00 – 23:00",
     open: "11:00",
     close: "23:00",
     closedWeekdays: [],
-    image: "/images/shop/shop2.webp",
-    mapUrl: "https://maps.app.goo.gl/13hAHPjbN42EAuvT9",
+    image: "/images/shop/interior.webp",
+    mapUrl: "https://maps.app.goo.gl/NoDUKbfKkY68tNw66",
   },
 ];
 
@@ -103,9 +75,7 @@ export interface NavItem {
 
 export const NAV: NavItem[] = [
   { label: "Pickup", href: "/pickup" },
-  { label: "Boutiques", href: "/boutiques" },
-  { label: "Stili di gelato", href: "/stili-di-gelato" },
-  { label: "Dove trovarci", href: "/dove-trovarci" },
+  { label: "Botteghe", href: "/dove-trovarci" },
   { label: "Contatti", href: "/contact" },
 ];
 
@@ -156,7 +126,7 @@ export const STILI: Stile[] = [
     title: "Lavorazione artigianale",
     subtitle: "Tra innovazione e tradizione",
     body: "Ogni gelato nasce dalle mani dei nostri maestri gelatieri, che uniscono la sapienza della tradizione italiana alle tecniche più innovative dell'alta gelateria.",
-    image: "/images/gusti/nocciola.webp",
+    image: "/images/gusti/fragola.webp",
   },
   {
     number: "03",
@@ -167,13 +137,6 @@ export const STILI: Stile[] = [
   },
   {
     number: "04",
-    title: "Cialda e cono express",
-    subtitle: "Realizzati secondo i tuoi desideri",
-    body: "Cialde e coni preparati al momento, caldi e fragranti, per accompagnare il tuo gelato con un tocco di croccantezza inconfondibile.",
-    image: "/images/gusti/fragola.webp",
-  },
-  {
-    number: "05",
     title: "Il servizio? Un piacere",
     subtitle: "Disponibilità e cortesia come vocazione",
     body: "Nelle nostre boutique l'accoglienza è parte dell'esperienza: un servizio attento e cortese per farti sentire a casa, ad ogni visita.",
@@ -207,11 +170,9 @@ export const FLAVORS: Flavor[] = [
 
 /** Each boutique offers a different selection of flavors. */
 export const BOUTIQUE_FLAVORS: Record<string, string[]> = {
-  "fiori-chiari": ["pistacchio", "nocciola", "stracciatella", "fragola", "cioccolato", "fiordilatte"],
-  "procida": ["nocciola", "zabaione", "stracciatella", "cioccolato", "caffe", "pistacchio", "mango"],
-  "piazza-napoli": ["fragola", "pistacchio", "cioccolato", "stracciatella", "fiordilatte", "limone"],
-  "via-giulia": ["zabaione", "nocciola", "fragola", "caffe", "fiordilatte", "pistacchio"],
-  "leone-iv": ["pistacchio", "cioccolato", "stracciatella", "nocciola", "fragola", "zabaione", "limone"],
+  "cosenza": ["pistacchio", "nocciola", "stracciatella", "fragola", "cioccolato", "fiordilatte"],
+  "catanzaro": ["nocciola", "zabaione", "stracciatella", "cioccolato", "caffe", "pistacchio", "mango"],
+  "lamezia": ["fragola", "pistacchio", "cioccolato", "stracciatella", "fiordilatte", "limone", "zabaione"],
 };
 
 export interface Format {

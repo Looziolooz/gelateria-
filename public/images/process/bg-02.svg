@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <style>.a{fill:none;stroke:white;stroke-miterlimit:10;opacity:0.08}</style>
+    <style>.b{fill:none;stroke:white;stroke-width:0.5;opacity:0.04}</style>
+  </defs>
+  <path class="a" stroke-width="2.5" d="M0 400 Q200 200 400 400 Q600 600 800 400"/>
+  <path class="a" stroke-width="2" d="M0 500 Q200 300 400 500 Q600 700 800 500"/>
+  <path class="b" d="M0 300 Q200 100 400 300 Q600 500 800 300"/>
+  <path class="a" stroke-width="1.5" d="M0 600 Q200 400 400 600 Q600 800 800 600"/>
+  <path class="b" d="M0 200 Q200 0 400 200 Q600 400 800 200"/>
+  <path class="a" stroke-width="1" d="M0 700 Q200 500 400 700 Q600 900 800 700"/>
+  <circle class="a" stroke-width="1" cx="200" cy="350" r="60"/>
+  <circle class="b" cx="220" cy="370" r="30"/>
+  <circle class="a" stroke-width="0.8" cx="600" cy="450" r="50"/>
+  <circle class="b" cx="580" cy="430" r="25"/>
+</svg>

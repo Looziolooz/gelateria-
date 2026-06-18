@@ -1,140 +1,94 @@
 import Link from "next/link";
-import Image from "next/image";
 import { HorizontalScroll } from "@/components/site/HorizontalScroll";
 import { HeroSequence } from "@/components/site/HeroSequence";
-import { HomeBoutiquesPanel } from "@/components/site/HomeBoutiquesPanel";
+import { StiliPanels } from "@/components/site/StiliPanels";
+import { ProcessScroll } from "@/components/site/ProcessScroll";
 import { HomeMapPanel } from "@/components/site/HomeMapPanel";
+import { ParallaxController } from "@/components/site/ParallaxController";
+import { Figure } from "@/components/site/Figure";
 import { SiteFooter } from "@/components/SiteFooter";
-
-const GELATI = [
-  "/images/gusti/pistacchio.webp",
-  "/images/gusti/nocciola.webp",
-  "/images/gusti/stracciatella.webp",
-  "/images/gusti/fragola.webp",
-  "/images/gusti/zabaione.webp",
-  "/images/gusti/stracciatella-board.webp",
-];
 
 const ICONS = [
   { icon: "/icons/icon-gluten.svg", title: "100% Gluten free", body: "Tutti i nostri prodotti sono senza glutine, realizzati con attenzione nei laboratori Artigiano." },
-  { icon: "/icons/icon-vegan.svg", title: "Opzioni Lactose-free e vegan", body: "Il gelato è condivisione: abbiamo tantissime opzioni senza lattosio e alternative vegane." },
-  { icon: "/icons/icon-natural.svg", title: "Produzione NATURALE", body: "Artigiano è attenzione alla stagionalità e zero coloranti, conservanti e semilavorati industriali." },
+  { icon: "/icons/icon-vegan.svg", title: "Lactose-free e vegan", body: "Il gelato è condivisione: tantissime opzioni senza lattosio e alternative vegane." },
+  { icon: "/icons/icon-natural.svg", title: "Produzione naturale", body: "Stagionalità e zero coloranti, conservanti o semilavorati industriali." },
 ];
 
 export default function HomePage() {
   return (
     <HorizontalScroll>
-      {/* 1 — HERO (scroll-driven frame sequence, PINNED while scrubbing).
-            On desktop the section is 2 viewports wide and the visual is sticky,
-            so the hero stays in place for one viewport of scroll while the 40
-            chocolate frames play, then it scrolls away to the story. */}
-      <section className="relative w-full h-[100svh] lg:w-[200vw] lg:h-[100svh] lg:shrink-0">
-        <div
-          className="lg:sticky lg:left-0 lg:top-0 relative h-[100svh] w-full lg:w-screen overflow-hidden bg-[#1c1510] bg-cover bg-center"
-          style={{ backgroundImage: "url(/images/hero-frames/ezgif-frame-001.jpg)" }}
-        >
+      <ParallaxController />
+
+      {/* 1 — HERO. The section is 2 viewports wide and the visual pins
+            (sticky) for one viewport while the chocolate-pour scrubs, then it
+            scrolls away to the story panels. */}
+      <section className="relative w-[200svw] h-[100svh] shrink-0">
+        <div className="grain sticky left-0 top-0 h-[100svh] w-[100svw] overflow-hidden bg-cream">
           <HeroSequence className="absolute inset-0 h-full w-full" />
-          <div className="absolute inset-0 bg-black/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-          <div className="absolute inset-0 flex flex-col justify-end px-[5vw] pb-[16vh]">
-            <p className="core c-white t-u fs-16 fs-m-12 mb-4" style={{ letterSpacing: "0.22em" }}>Artigiano Gelateria</p>
-            <h1 className="title caviar fs-120 fs-m-50 t-lh-1 t-u c-white">Gelato per amore</h1>
-          </div>
-          <span className="absolute bottom-0 right-0 h-[120px] w-[120px] md:h-[150px] md:w-[150px] b-primary c-white flex flex-col items-center justify-center gap-1 caviar t-u f-w-600 text-[13px]">
-            SCROLL
-            <span className="block h-3 w-3 border-b-2 border-r-2 border-white rotate-45 -mt-0.5 animate-bounce" />
-          </span>
+          {/* Cream feather — the frame's own background is light, so we extend it
+              edge-to-edge into the page: the chocolate scene dissolves into panna
+              with no visible border, and the periphery (where upscaling shows) is
+              hidden in cream. */}
+          <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(120% 112% at 54% 42%, transparent 36%, #f6efe1 88%)" }} />
+          <div aria-hidden className="absolute inset-x-0 top-0 h-[24%]" style={{ background: "linear-gradient(180deg, #f6efe1, transparent)" }} />
+          <div aria-hidden className="absolute inset-x-0 bottom-0 h-[34%]" style={{ background: "linear-gradient(0deg, #f6efe1 12%, transparent)" }} />
+          {/* soft cream scrim behind the lower-left title for legibility */}
+          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(to top right, rgba(246,239,225,0.94) 0%, rgba(246,239,225,0.45) 30%, transparent 56%)" }} />
         </div>
       </section>
 
-      {/* 2 — STORY + gelato gallery (independent slider with a visible scrollbar,
-            a horizontal slider with a visible scrollbar). */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary pt-28 lg:pt-0 pb-10 lg:pb-0 px-[5vw] lg:pr-0 lg:flex lg:flex-row lg:items-center lg:gap-10">
-        <div className="lg:w-[33%] lg:shrink-0 flex flex-col lg:justify-center mb-8 lg:mb-0">
-          <h2 className="title caviar fs-60 fs-m-30 t-lh-1 t-u mb-6">Il gelato:<br />una storia d&apos;amore</h2>
-          <p className="caviar text-[18px] md:text-[20px] leading-relaxed opacity-90 mb-8">
-            Amore per la qualità, per la tradizione, per la ricercatezza di ingredienti e lavorazioni.
-          </p>
-          <div className="flex items-start gap-4">
-            <Image src="/images/home/premio_3_coni.png" alt="Tre coni Gambero Rosso" width={120} height={120} className="w-[78px] h-auto shrink-0" />
-            <p className="caviar text-[13px] md:text-[14px] leading-relaxed opacity-80">
-              L&apos;eccellenza del gelato Artigiano è stata premiata con 3 coni Gambero Rosso, il più
-              alto riconoscimento dedicato all&apos;arte della gelateria italiana e alla sua continua innovazione.
-            </p>
-          </div>
-        </div>
-        {/* Independent horizontal slider — drag, trackpad, or wheel (captured by
-            HorizontalScroll). The gold scrollbar at the bottom reveals the gallery. */}
-        <div className="lg:flex-1 lg:min-w-0 lg:pr-[5vw]">
-          <div className="flex gap-5 overflow-x-auto h-scroll pb-5 lg:items-center">
-            {GELATI.map((src, i) => (
-              <div key={i} className="relative shrink-0 w-72 sm:w-80 lg:w-[460px] aspect-[4/3] lg:aspect-[3/2] rounded-[16px] overflow-hidden bg-white shadow-md">
-                <Image src={src} alt="Gusto di gelato Artigiano" fill className="object-cover" sizes="(max-width:1024px) 80vw, 460px" quality={92} />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 2 — STILI DI GELATO (four editorial panels) */}
+      <StiliPanels />
 
-      {/* 3 — BOUTIQUES */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 overflow-hidden">
-        <HomeBoutiquesPanel />
-      </section>
+      {/* 3 — IL PROCESSO (four cinematic dark panels) */}
+      <ProcessScroll />
 
-      {/* 4 — STYLES (petrol — brand statement panel, high contrast) */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-secondary c-white overflow-hidden flex items-center">
-        <div className="w-full grid lg:grid-cols-2 gap-10 items-center pt-28 lg:pt-24 pb-12 px-[5vw]">
-          <div>
-            <h2 className="main-title caviar fs-130 fs-m-50 t-u t-lh-1 mb-6">Il gelato Artigiano<br />un&apos;icona italiana</h2>
-            <div className="grid grid-cols-2 gap-4 max-w-lg mb-8 caviar text-[16px] md:text-[19px] t-u f-w-600">
-              <p>Una storia di bontà e di eccellenza</p>
-              <p>Amore… al primo assaggio</p>
+      {/* 4 — VALORI + CTA + interior photo */}
+      <section className="relative w-[100svw] h-[100svh] shrink-0 b-back-1 c-secondary flex items-center overflow-hidden">
+        <div className="w-full px-[5vw] grid lg:grid-cols-2 gap-12 lg:gap-16 items-center max-w-[1280px] mx-auto">
+          <div data-reveal-stagger>
+            <p data-reveal className="eyebrow mb-3">Una dolce ossessione</p>
+            <h2 data-reveal className="title caviar text-[30px] md:text-[42px] t-u t-lh-12 mb-6">
+              Buono per davvero
+            </h2>
+            <ul className="space-y-5 mb-9">
+              {ICONS.map((f) => (
+                <li key={f.title} data-reveal className="flex items-start gap-4">
+                  <img src={f.icon} alt="" aria-hidden className="h-12 w-12 shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="core fs-16 t-u c-primary mb-1" style={{ letterSpacing: "0.06em" }}>{f.title}</h3>
+                    <p className="caviar text-[15px] leading-relaxed opacity-80 max-w-sm">{f.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div data-reveal className="flex flex-wrap gap-3">
+              <Link href="/pickup" className="btn-pill">Prenota il ritiro</Link>
+              <a href="#" className="btn-pill btn-pill--brown">Libro degli Ingredienti</a>
             </div>
-            <p className="caviar text-[15px] md:text-[17px] leading-relaxed max-w-xl opacity-95 mb-8">
-              Oltre 50 gusti, che amiamo definire “stili” di gelato, realizzati ad arte con materie prime
-              di altissima qualità, strumenti della tradizione e una minuziosa attenzione verso i
-              particolari e le esigenze della clientela.
-            </p>
-            <Link href="/stili-di-gelato" className="caviar t-u inline-flex items-center gap-2 bg-white c-primary rounded-full px-8 py-3.5 text-[14px] font-semibold hover:bg-cream transition-colors">
-              Stili di gelato
-            </Link>
           </div>
-          <div className="relative hidden lg:block h-[70vh]">
-            <Image src="/images/shop/maestro.webp" alt="Gelato Artigiano" fill className="object-cover rounded-[18px]" sizes="45vw" quality={94} />
-            <Image src="/images/home/cono.png" alt="" width={260} height={260} className="absolute -bottom-6 -left-10 w-44 h-auto rotate-[8deg] drop-shadow-2xl" />
-            <Image src="/images/home/coffee.png" alt="" width={200} height={200} className="absolute -top-6 -right-6 w-28 h-auto -rotate-6 drop-shadow-2xl" />
-          </div>
-        </div>
-      </section>
 
-      {/* 5 — ICONS */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 b-back-1 c-secondary overflow-hidden flex items-center">
-        <div className="w-full pt-28 lg:pt-24 pb-12 px-[5vw]">
-          <div className="grid gap-10 md:grid-cols-3 mb-12 text-center max-w-5xl mx-auto">
-            {ICONS.map((f) => (
-              <div key={f.title} className="flex flex-col items-center">
-                <img src={f.icon} alt="" className="h-[76px] w-[76px] mb-5" />
-                <h3 className="core fs-16 t-u c-primary mb-2.5" style={{ letterSpacing: "0.08em" }}>{f.title}</h3>
-                <p className="caviar text-[15px] leading-relaxed opacity-80 max-w-xs">{f.body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex flex-col items-center gap-8">
-            <a href="#" className="caviar b-primary c-white t-u inline-flex items-center rounded-full px-7 py-3 text-[14px] font-semibold hover:opacity-90">Libro degli Ingredienti</a>
-            <div className="relative w-full max-w-5xl aspect-[21/7] rounded-[16px] overflow-hidden shadow-lg">
-              <Image src="/images/shop/interior.webp" alt="Coni di gelato Artigiano" fill className="object-cover" sizes="90vw" quality={94} />
+          <div data-reveal className="hidden lg:flex items-center justify-center">
+            <div data-px="-30" className="relative w-full max-w-[460px] will-change-transform">
+              <Figure
+                src="/images/shop/interior.webp"
+                alt="L'interno della bottega Artigiano"
+                sizes="(max-width: 1024px) 0px, 460px"
+                radius="18px"
+                className="w-full aspect-[4/5]"
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 6 — VIENI A TROVARCI + map */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 overflow-hidden">
+      {/* 5 — VIENI A TROVARCI + map */}
+      <section className="relative w-[100svw] h-[100svh] shrink-0 overflow-hidden">
         <HomeMapPanel />
       </section>
 
-      {/* 7 — FOOTER panel */}
-      <section className="relative w-full lg:w-screen lg:h-[100svh] lg:shrink-0 flex items-center b-secondary">
+      {/* 6 — FOOTER panel (newsletter lives only in the nav overlay) */}
+      <section className="relative w-[100svw] h-[100svh] shrink-0 flex items-center b-secondary">
         <div className="w-full">
           <SiteFooter />
         </div>

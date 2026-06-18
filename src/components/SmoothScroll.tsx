@@ -1,40 +1,11 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname } from "next/navigation";
-import Lenis from "lenis";
-import { setLenis } from "@/lib/lenis";
-
+/**
+ * The whole public site now scrolls horizontally (see HorizontalScroll), which
+ * runs its own eased scroll engine. Lenis vertical smoothing would fight the
+ * track's wheel handling, so it is intentionally not initialised here — this is
+ * a thin pass-through kept as the mount point in the site layout.
+ */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
-
-  useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) return;
-    // Horizontal-scroll pages run their own scroll engine — skip Lenis there.
-    if (["/", "/boutiques", "/stili-di-gelato"].includes(pathname)) return;
-
-    const lenis = new Lenis({
-      duration: 1.1,
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.4,
-    });
-    setLenis(lenis);
-
-    let raf = 0;
-    const loop = (time: number) => {
-      lenis.raf(time);
-      raf = requestAnimationFrame(loop);
-    };
-    raf = requestAnimationFrame(loop);
-
-    return () => {
-      cancelAnimationFrame(raf);
-      lenis.destroy();
-      setLenis(null);
-    };
-  }, [pathname]);
-
   return <>{children}</>;
 }

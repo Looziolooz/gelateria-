@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800">
+  <defs>
+    <style>.a{fill:none;stroke:white;stroke-miterlimit:10;opacity:0.08}</style>
+    <style>.b{fill:none;stroke:white;stroke-width:0.5;opacity:0.04}</style>
+  </defs>
+  <path class="a" stroke-width="2" d="M100 700 Q200 400 350 500 Q500 600 600 300 Q650 150 750 200"/>
+  <path class="a" stroke-width="1.5" d="M0 650 Q150 350 300 450 Q450 550 550 250 Q600 100 700 150"/>
+  <path class="b" d="M50 750 Q130 500 280 580 Q430 660 530 380 Q580 230 680 280"/>
+  <path class="a" stroke-width="1" d="M200 800 Q280 550 420 620 Q560 690 660 420"/>
+  <ellipse class="a" stroke-width="1.5" cx="150" cy="200" rx="80" ry="40" transform="rotate(-20 150 200)"/>
+  <ellipse class="b" cx="250" cy="150" rx="60" ry="30" transform="rotate(-15 250 150)"/>
+  <ellipse class="a" stroke-width="1" cx="600" cy="650" rx="90" ry="45" transform="rotate(25 600 650)"/>
+  <circle class="a" stroke-width="1" cx="100" cy="400" r="15"/>
+  <circle class="b" cx="130" cy="420" r="8"/>
+  <circle class="a" stroke-width="1" cx="680" cy="450" r="12"/>
+  <circle class="b" cx="710" cy="470" r="6"/>
+</svg>

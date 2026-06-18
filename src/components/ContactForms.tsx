@@ -77,10 +77,7 @@ export function ContactForms() {
 
               <ConsentBlock />
 
-              <button
-                type="submit"
-                className="b-primary c-white t-u caviar rounded-full px-7 py-3 text-sm font-semibold"
-              >
+              <button type="submit" className="btn-pill">
                 Invia messaggio
               </button>
 

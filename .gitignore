@@ -57,3 +57,9 @@ tsconfig.tsbuildinfo
 
 # Local agent tooling
 .claude/
+
+# photo re-grade backups (scripts/regrade-photos.mjs)
+scripts/_photo-originals/
+
+# local tooling
+.opencode/

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     template: "%s | ARTIGIANO",
   },
   description:
-    "Artigiano Gelateria — vera gelateria artigianale a Milano e Roma. Oltre 50 stili di gelato, ingredienti di finissima qualità, 100% gluten free, opzioni vegan. Vieni a trovarci nelle nostre boutique.",
+    "Artigiano Gelateria — vera gelateria artigianale in Calabria. Oltre 50 stili di gelato, ingredienti di finissima qualità, 100% gluten free, opzioni vegan. Vieni a trovarci nelle nostre boutique a Cosenza, Catanzaro e Lamezia Terme.",
   icons: { icon: "/icons/logo_color.svg", shortcut: "/icons/logo_color.svg" },
   openGraph: {
     type: "website",
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     siteName: "Artigiano Gelateria",
     title: "Artigiano Gelateria — Gelato per amore",
     description:
-      "Alta gelateria artigianale a Milano e Roma. Oltre 50 stili di gelato. Ordina e ritira nella tua boutique.",
+      "Alta gelateria artigianale in Calabria. Oltre 50 stili di gelato, boutique a Cosenza, Catanzaro e Lamezia Terme. Ordina e ritira.",
     url: "https://artigianogelateria.it/",
     images: [{ url: "/images/shop/shop1.webp", width: 1200, height: 630 }],
   },

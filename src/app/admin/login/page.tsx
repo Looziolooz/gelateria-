@@ -35,6 +35,14 @@ export default function AdminLoginPage() {
     setError(false);
   }
 
+  // One click → authenticate with the demo account and open the dashboard, so a
+  // client/dev can explore every feature without typing credentials.
+  function enterDemo() {
+    if (login(DEMO_CREDENTIALS.email, DEMO_CREDENTIALS.password)) {
+      router.replace("/admin");
+    }
+  }
+
   return (
     <div className="min-h-screen grid lg:grid-cols-2 bg-cream">
       {/* Left — brand panel */}
@@ -85,6 +93,14 @@ export default function AdminLoginPage() {
             >
               Compila automaticamente →
             </button>
+          </div>
+
+          {/* One-click demo entry — no typing needed */}
+          <button type="button" onClick={enterDemo} className="btn-pill w-full mb-6">
+            Entra nella demo <ArrowRight size={16} />
+          </button>
+          <div className="flex items-center gap-3 mb-6 text-[11px] uppercase tracking-[0.16em] text-secondary/40">
+            <span className="h-px flex-1 bg-secondary/15" /> oppure accedi <span className="h-px flex-1 bg-secondary/15" />
           </div>
 
           <form onSubmit={submit} className="space-y-4">

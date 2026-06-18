@@ -2,24 +2,24 @@
 
 import { useMemo, useState } from "react";
 import { Search, Leaf, WheatOff } from "lucide-react";
-import { INVENTORY_WITH_STATUS, euro } from "@/lib/admin-data";
+import { getInventory, euro, type BoutiqueScope } from "@/lib/admin-data";
 import { StatusBadge } from "@/components/admin/ui";
 import { cn } from "@/lib/utils";
 
 const CATEGORIES = ["Tutte", "Creme", "Frutta", "Cioccolato", "Specialità", "Ingrediente"] as const;
 
-export function InventoryTable() {
+export function InventoryTable({ scope = "all" }: { scope?: BoutiqueScope }) {
   const [q, setQ] = useState("");
   const [cat, setCat] = useState<(typeof CATEGORIES)[number]>("Tutte");
 
   const rows = useMemo(() => {
-    return INVENTORY_WITH_STATUS.filter((i) => {
+    return getInventory(scope).filter((i) => {
       const matchCat = cat === "Tutte" || i.category === cat;
       const needle = q.trim().toLowerCase();
       const matchQ = !needle || i.name.toLowerCase().includes(needle);
       return matchCat && matchQ;
     });
-  }, [q, cat]);
+  }, [q, cat, scope]);
 
   return (
     <div className="rounded-2xl bg-white ring-1 ring-secondary/10 shadow-sm overflow-hidden">

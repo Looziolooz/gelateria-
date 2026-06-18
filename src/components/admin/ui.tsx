@@ -130,12 +130,11 @@ export function BarList({
 const DONUT_COLORS = ["#ac7b40", "#2c595e", "#a2ae95"];
 export function Donut({ data }: { data: { channel: string; value: number }[] }) {
   const total = data.reduce((s, d) => s + d.value, 0) || 1;
-  let acc = 0;
   const stops = data
     .map((d, i) => {
-      const start = (acc / total) * 360;
-      acc += d.value;
-      const end = (acc / total) * 360;
+      const prev = data.slice(0, i).reduce((s, x) => s + x.value, 0);
+      const start = (prev / total) * 360;
+      const end = ((prev + d.value) / total) * 360;
       return `${DONUT_COLORS[i % DONUT_COLORS.length]} ${start}deg ${end}deg`;
     })
     .join(", ");

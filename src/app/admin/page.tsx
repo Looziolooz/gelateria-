@@ -1,37 +1,67 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import {
-  Banknote, ShoppingBag, Receipt, Boxes, TrendingUp, AlertTriangle, ArrowRight, CalendarCheck, IceCream,
+  Banknote, ShoppingBag, Receipt, Boxes, AlertTriangle, ArrowRight, CalendarCheck, IceCream,
 } from "lucide-react";
 import {
-  KPIS, REVENUE_MONTHLY, CHANNEL_SPLIT, TOP_FLAVORS, ORDERS,
-  INVENTORY_WITH_STATUS, BOOKINGS, BOOKING_KPIS, euro,
+  computeKpis, computeBookingKpis, getOrders, getInventory, getBookings,
+  getRevenueMonthly, getChannelSplit, getTopFlavors, scopeLabel, euro, type Booking,
 } from "@/lib/admin-data";
+import { loadStoredBookings, BOOKINGS_EVENT } from "@/lib/bookings-store";
+import { useAdminScope } from "@/components/admin/AdminScope";
 import { Card, KpiCard, BarChart, BarList, Donut, StatusBadge } from "@/components/admin/ui";
 
 export default function AdminDashboard() {
-  const recent = ORDERS.slice(0, 6);
-  const recentBookings = BOOKINGS.slice(0, 5);
-  const lowStock = INVENTORY_WITH_STATUS.filter((i) => i.status !== "Disponibile");
+  const { scope } = useAdminScope();
+  const [live, setLive] = useState<Booking[]>([]);
+
+  useEffect(() => {
+    const sync = () => setLive(loadStoredBookings());
+    sync();
+    window.addEventListener(BOOKINGS_EVENT, sync);
+    window.addEventListener("storage", sync);
+    return () => {
+      window.removeEventListener(BOOKINGS_EVENT, sync);
+      window.removeEventListener("storage", sync);
+    };
+  }, []);
+
+  const kpis = computeKpis(scope);
+  const bookingKpis = computeBookingKpis(scope, live);
+  const recent = getOrders(scope).slice(0, 6);
+  const recentBookings = getBookings(scope, live).slice(0, 5);
+  const lowStock = getInventory(scope).filter((i) => i.status !== "Disponibile");
+  const revenueMonthly = getRevenueMonthly(scope);
+  const channelSplit = getChannelSplit(scope);
+  const topFlavors = getTopFlavors(scope);
 
   return (
     <div className="space-y-6">
+      {/* scope banner */}
+      <p className="text-sm text-secondary/60">
+        Stai visualizzando: <span className="font-semibold text-secondary">{scopeLabel(scope)}</span>
+        {scope === "all" && " — dati aggregati delle tre botteghe"}
+      </p>
+
       {/* KPIs */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        <KpiCard label="Fatturato oggi" value={euro(KPIS.fatturatoOggi)} sub="vs ieri" trend="+8%" icon={<Banknote size={18} />} />
-        <KpiCard label="Prenotazioni oggi" value={String(BOOKING_KPIS.oggi)} sub={`${BOOKING_KPIS.pronte} pronte`} icon={<CalendarCheck size={18} />} accent="secondary" />
-        <KpiCard label="Ordini oggi" value={String(KPIS.ordiniOggi)} sub={`${KPIS.pickupOggi} via pickup`} icon={<ShoppingBag size={18} />} accent="secondary" />
-        <KpiCard label="Scontrino medio" value={euro(KPIS.scontrinoMedio)} sub="oggi" icon={<Receipt size={18} />} accent="green" />
-        <KpiCard label="Merce sotto scorta" value={String(KPIS.lowStock)} sub="da riordinare" icon={<AlertTriangle size={18} />} accent="primary" />
+        <KpiCard label="Fatturato oggi" value={euro(kpis.fatturatoOggi)} sub="vs ieri" trend="+8%" icon={<Banknote size={18} />} />
+        <KpiCard label="Prenotazioni oggi" value={String(bookingKpis.oggi)} sub={`${bookingKpis.pronte} pronte`} icon={<CalendarCheck size={18} />} accent="secondary" />
+        <KpiCard label="Ordini oggi" value={String(kpis.ordiniOggi)} sub={`${kpis.pickupOggi} via pickup`} icon={<ShoppingBag size={18} />} accent="secondary" />
+        <KpiCard label="Scontrino medio" value={euro(kpis.scontrinoMedio)} sub="oggi" icon={<Receipt size={18} />} accent="green" />
+        <KpiCard label="Merce sotto scorta" value={String(kpis.lowStock)} sub="da riordinare" icon={<AlertTriangle size={18} />} accent="primary" />
       </div>
 
       {/* Charts row */}
       <div className="grid gap-6 lg:grid-cols-3">
-        <Card title="Fatturato mensile" subtitle="Ultimi 10 mesi" className="lg:col-span-2"
-          action={<span className="text-sm font-semibold text-secondary">{euro(KPIS.fatturatoMese)} · giugno</span>}>
-          <BarChart data={REVENUE_MONTHLY.map((m) => ({ label: m.month, value: m.revenue }))} format={(v) => euro(v)} height={220} />
+        <Card title="Fatturato mensile" subtitle={`Ultimi 10 mesi · ${scopeLabel(scope)}`} className="lg:col-span-2"
+          action={<span className="text-sm font-semibold text-secondary">{euro(kpis.fatturatoMese)} · giugno</span>}>
+          <BarChart data={revenueMonthly.map((m) => ({ label: m.month, value: m.revenue }))} format={(v) => euro(v)} height={220} />
         </Card>
         <Card title="Canali di vendita" subtitle="Distribuzione del mese">
-          <Donut data={CHANNEL_SPLIT} />
+          <Donut data={channelSplit} />
         </Card>
       </div>
 
@@ -52,6 +82,9 @@ export default function AdminDashboard() {
                     <td className="py-2.5 text-right"><StatusBadge status={o.status} /></td>
                   </tr>
                 ))}
+                {recent.length === 0 && (
+                  <tr><td className="py-6 text-center text-secondary/50">Nessun ordine per questa bottega.</td></tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -59,7 +92,7 @@ export default function AdminDashboard() {
 
         {/* Top flavors */}
         <Card title="Gusti più venduti" subtitle="Coni serviti questo mese">
-          <BarList data={TOP_FLAVORS.map((f) => ({ label: f.name, value: f.scoops }))} format={(v) => `${v.toLocaleString("it-IT")}`} />
+          <BarList data={topFlavors.map((f) => ({ label: f.name, value: f.scoops }))} format={(v) => `${v.toLocaleString("it-IT")}`} />
         </Card>
       </div>
 
@@ -81,6 +114,9 @@ export default function AdminDashboard() {
                   <td className="py-2.5 text-right"><StatusBadge status={b.status} /></td>
                 </tr>
               ))}
+              {recentBookings.length === 0 && (
+                <tr><td className="py-6 text-center text-secondary/50">Nessuna prenotazione per questa bottega.</td></tr>
+              )}
             </tbody>
           </table>
         </div>
@@ -88,7 +124,7 @@ export default function AdminDashboard() {
 
       {/* Low stock alert */}
       {lowStock.length > 0 && (
-        <Card title="Avvisi magazzino" subtitle="Prodotti da riordinare"
+        <Card title="Avvisi magazzino" subtitle={`Prodotti da riordinare · ${scopeLabel(scope)}`}
           action={<Link href="/admin/merce" className="text-sm font-semibold text-primary inline-flex items-center gap-1">Magazzino <ArrowRight size={14} /></Link>}>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {lowStock.map((i) => (

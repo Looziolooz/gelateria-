@@ -62,19 +62,33 @@ Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root
 - **Containers:** `.site-wrap` ≤1280px, `.content-wrap` ≤1000px; gutter `5vw`.
 
 ## Layout
-- **Approach:** hybrid — creative-editorial storytelling for the public site,
-  grid-disciplined for the admin dashboard.
-- **Homepage (desktop ≥1024px):** horizontal scroll engine
-  (`components/site/HorizontalScroll.tsx`) — full-screen panels in a row, vertical
-  wheel mapped to horizontal; the hero pins (sticky, 2-viewport section) and
-  scrubs 40 frames. **Mobile/tablet (<1024px):** panels stack vertically.
-- **Single-screen pages:** dove-trovarci, contact (2-col → stacked on mobile).
+- **Approach:** hybrid — creative-editorial horizontal storytelling for the
+  public site, grid-disciplined (normal vertical) for the admin dashboard.
+- **Whole public site = horizontal, all devices.** Every public route wraps its
+  panels in `components/site/HorizontalScroll.tsx` — full-`svw` panels in a row.
+  Pointer/wheel devices map vertical wheel → eased horizontal travel; touch
+  devices scroll natively with CSS scroll-snap (`@media (hover:none)`). The hero
+  pins (sticky, 2-viewport section) and scrubs 100 frames. There is **no**
+  vertical-stack fallback; panel internals reflow responsively (stacked
+  text/image on narrow screens), and content-heavy panels (forms, cards) may
+  scroll vertically *within* a panel via `overflow-y-auto`.
+- **Pickup** is a horizontal step-**wizard** (one panel per step, Back/Continua
+  scrolls the track); **dove-trovarci** & **contact** are horizontal panels.
+- **Admin** (`src/app/admin/*`) keeps a normal vertical layout; reachable from a
+  visible "Admin" button in `SiteHeader` (nocciola, not rosso) + footer.
 - **Border radius:** chips/pills `999px`; cards `14–18px`; inputs `10px`.
 
 ## Motion
-- **Approach:** intentional. Reveal-on-scroll (`[data-reveal]`, fade-up 0.9s
-  `cubic-bezier(.22,.61,.36,1)`); pinned hero frame scrub; gold slider scrollbar
-  (`.h-scroll`); horizontal-scroll lerp (0.12). Respects `prefers-reduced-motion`.
+- **Approach:** intentional but cinematic. Reveal-on-scroll (`[data-reveal]`,
+  fade-up 0.9s `cubic-bezier(.22,.61,.36,1)`; `[data-reveal-stagger]` cascades
+  children); `scrollLeft`-driven hero frame scrub + masked Fraunces title; a
+  scroll-driven horizontal parallax controller (`[data-px]`); GSAP map-pin drop
+  (`back.out`); shared easing/duration tokens in `src/lib/motion.ts`. Horizontal
+  travel lerp (`EASING 0.09`). Respects `prefers-reduced-motion` throughout.
+- **Photography:** one editorial set — `<Figure>` frame (`.figure-frame` gold
+  hairline + shadow) over a warm runtime grade (`.photo-grade`); source photos
+  also get a pixel-level tone/vibrance/clarity pass (`scripts/regrade-photos.mjs`,
+  sharp). Film grain (`.grain`) warms the dark cinematic panels.
 
 ## Brand
 - **Name:** Artigiano Gelateria · "dal 1978" · "il maestro gelatiere".
@@ -88,3 +102,17 @@ Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root
 | 2026-06-16 | Horizontal-scroll storytelling homepage + pinned scroll hero | Immersive locomotive-style storytelling; distinctive for an artisan gelato brand |
 | 2026-06-16 | `.btn-pill` primary CTA → rosso `#B23A2C`; gold stays for labels/accents | Clear click hierarchy: rosso = primary action, gold = brand accent |
 | 2026-06-16 | "Un'icona italiana" panel → petrol instead of gold bg | Cream-on-gold was low contrast; petrol fixes readability + gives the panel rhythm a dark beat |
+| 2026-06-17 | Horizontal scroll on **all devices**, whole public site (overrides the prior "mobile/tablet stacks vertically") | User request: one consistent cinematic horizontal paradigm everywhere; Pickup becomes a horizontal step-wizard |
+| 2026-06-17 | Cinematic motion elevation: shared `motion.ts` tokens, stagger reveals, `scrollLeft`-driven hero scrub + parallax controller (replaced fragile deep-panel ScrollTrigger positioning) | "Expensive/modern" feel that is reliable inside a custom horizontal scroller on every device |
+| 2026-06-17 | Reinstated the built-but-unused `ProcessScroll` "il processo" panels into the homepage | Dead code → flagship content; "mettere ordine" |
+| 2026-06-17 | Photo quality = both: runtime `.photo-grade`/`<Figure>` + baked sharp re-grade of shop/gusti sources | User chose "Entrambi"; Adobe MCP can't read local repo files, so the pixel pass is done locally with sharp |
+| 2026-06-17 | Visible "Admin" entry in `SiteHeader` (nocciola, not rosso) | User request: make the admin reachable from the public chrome |
+| 2026-06-17 | Full-screen overlay nav (`SiteNavOverlay`): minimal header (logo · IT/EN · rosso "Prenota" · "Naviga"), petrolio overlay with oversized Fraunces links + newsletter/social/legal | User wants a "menu a tendina" like the Crema reference; replaces inline+collapse nav on all devices |
+| 2026-06-17 | Admin entry moved into the overlay's legal row ("Area riservata") — **less** visible (supersedes the visible header pill); login adds one-click "Entra nella demo" | User: keep admin discreet but let a client see everything without typing credentials |
+| 2026-06-17 | Hero rethought: **cream** background matching the frame's own light counter, edges feathered into panna (no border), dark Fraunces title, lower canvas DPR, scroll cue removed | Frames are light + only 1136px — a dark frame showed a hard border and upscaling pixels; "ragiona al contrario" |
+| 2026-06-17 | "Il processo" condensed from 4 panels to **one** (4-step numbered row) | Four gelato story panels + four process panels read repetitive |
+| 2026-06-17 | Per-city illustrated maps (`CartoonMap`): line-art landmarks + rosso gelato-cup pin per Cosenza/Catanzaro/Lamezia | Reference-style map; shows where each bottega sits among real monuments/piazzas |
+| 2026-06-17 | Admin scoped per-gelateria: `AdminScope` store + `Tutte/Cosenza/Catanzaro/Lamezia` switcher; per-boutique selectors in `admin-data.ts`; "Tutte" = sum/union | User: split prenotazioni/ordini/merce/fatturato per shop to avoid errors, plus an aggregate view |
+| 2026-06-18 | Newsletter sign-up lives **only** in the nav overlay (removed from all footers; footer is a brand sign-off) | User wants it only in the toggle menu |
+| 2026-06-18 | Admin entry surfaced as an understated "Gestionale" chip in the overlay + footer (was too hidden) | User couldn't find it after the "less visible" change |
+| 2026-06-18 | Pickup is a **controlled, gated** horizontal wizard (own carousel, not the free-scroll track): off-screen steps are `inert`, "Continua" is disabled until the step's required fields are filled, the stepper can't skip ahead | User: every step mandatory, "se non si compila non si può andare avanti" to avoid order omissions |

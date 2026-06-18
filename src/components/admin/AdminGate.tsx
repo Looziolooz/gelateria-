@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { getSession, AUTH_EVENT } from "@/lib/admin-auth";
 import { AdminShell } from "@/components/admin/AdminShell";
+import { AdminScopeProvider } from "@/components/admin/AdminScope";
 import { Emblem } from "@/components/icons";
 
 export function AdminGate({ children }: { children: React.ReactNode }) {
@@ -40,5 +41,9 @@ export function AdminGate({ children }: { children: React.ReactNode }) {
     );
   }
 
-  return <AdminShell>{children}</AdminShell>;
+  return (
+    <AdminScopeProvider>
+      <AdminShell>{children}</AdminShell>
+    </AdminScopeProvider>
+  );
 }

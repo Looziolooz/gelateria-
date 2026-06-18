@@ -2,7 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
-import { ORDERS, euro, type OrderStatus } from "@/lib/admin-data";
+import { getOrders, euro, type OrderStatus, type BoutiqueScope } from "@/lib/admin-data";
 import { StatusBadge } from "@/components/admin/ui";
 import { cn } from "@/lib/utils";
 
@@ -10,12 +10,12 @@ const STATUSES: (OrderStatus | "Tutti")[] = [
   "Tutti", "Nuovo", "In preparazione", "Pronto", "Ritirato", "Annullato",
 ];
 
-export function OrdersTable() {
+export function OrdersTable({ scope = "all" }: { scope?: BoutiqueScope }) {
   const [q, setQ] = useState("");
   const [status, setStatus] = useState<(typeof STATUSES)[number]>("Tutti");
 
   const rows = useMemo(() => {
-    return ORDERS.filter((o) => {
+    return getOrders(scope).filter((o) => {
       const matchStatus = status === "Tutti" || o.status === status;
       const needle = q.trim().toLowerCase();
       const matchQ =
@@ -25,7 +25,7 @@ export function OrdersTable() {
         o.boutiqueLabel.toLowerCase().includes(needle);
       return matchStatus && matchQ;
     });
-  }, [q, status]);
+  }, [q, status, scope]);
 
   return (
     <div className="rounded-2xl bg-white ring-1 ring-secondary/10 shadow-sm overflow-hidden">

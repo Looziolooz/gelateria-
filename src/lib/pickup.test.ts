@@ -14,7 +14,7 @@ function makeBoutique(overrides: Partial<Boutique> = {}): Boutique {
   return {
     id: "test",
     name: "Test",
-    city: "Milano",
+    city: "Cosenza",
     address: "",
     phone: "",
     phoneHref: "",

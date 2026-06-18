@@ -12,6 +12,23 @@ export function RevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Stagger cascades: every [data-reveal] inside a [data-reveal-stagger]
+    // container gets an incremental delay so lists/grids ripple in instead of
+    // popping at once. An explicit inline --reveal-delay always wins.
+    const STEP = 70; // ms between siblings
+    document
+      .querySelectorAll<HTMLElement>("[data-reveal-stagger]")
+      .forEach((group) => {
+        const base = Number(group.dataset.revealStagger) || STEP;
+        group
+          .querySelectorAll<HTMLElement>("[data-reveal]")
+          .forEach((child, i) => {
+            if (!child.style.getPropertyValue("--reveal-delay")) {
+              child.style.setProperty("--reveal-delay", `${i * base}ms`);
+            }
+          });
+      });
+
     const els = Array.from(document.querySelectorAll<HTMLElement>("[data-reveal]"));
     if (els.length === 0) return;
 

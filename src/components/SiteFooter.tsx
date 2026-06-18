@@ -1,21 +1,18 @@
 import Link from "next/link";
 import { LayoutDashboard } from "lucide-react";
 import { SOCIAL, COMPANY } from "@/lib/data";
-import { NewsletterForm } from "@/components/NewsletterForm";
 import { BrandLogo } from "@/components/BrandLogo";
 
+// The newsletter sign-up lives only in the nav overlay (SiteNavOverlay), not in
+// the footer — the footer is a brand sign-off.
 export function SiteFooter() {
   return (
     <footer className="b-secondary c-white">
-      {/* Newsletter */}
+      {/* Brand sign-off */}
       <div className="site-wrap py-[70px] md:py-[90px] text-center">
-        <BrandLogo tone="light" className="items-center mb-8" />
-        <p className="claim core fs-16 fs-m-12 c-white mb-6 t-u" style={{ letterSpacing: "0.14em" }}>
-          Iscriviti alla newsletter
-        </p>
-        <div className="mx-auto max-w-md">
-          <NewsletterForm variant="dark" />
-        </div>
+        <BrandLogo tone="light" className="items-center mb-3" />
+        <p className="cormorant text-[30px] md:text-[38px] leading-none text-primary mb-6">dal 1978</p>
+        <hr className="rule-gold rule-gold--center" />
       </div>
 
       {/* Legal bar */}

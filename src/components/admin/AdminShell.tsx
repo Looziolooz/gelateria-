@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { ConeGlyph } from "@/components/icons";
 import { logout, getSession } from "@/lib/admin-auth";
+import { useAdminScope } from "@/components/admin/AdminScope";
+import { BOUTIQUE_IDS, BOUTIQUE_META, type BoutiqueScope } from "@/lib/admin-data";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -28,6 +30,32 @@ const TITLES: Record<string, string> = {
   "/admin/fatturato": "Fatturato",
   "/admin/calendario": "Calendario",
 };
+
+function ScopeSwitcher() {
+  const { scope, setScope } = useAdminScope();
+  const opts: { id: BoutiqueScope; label: string }[] = [
+    { id: "all", label: "Tutte" },
+    ...BOUTIQUE_IDS.map((id) => ({ id, label: BOUTIQUE_META[id].city })),
+  ];
+  return (
+    <div className="flex items-center gap-1.5 overflow-x-auto rounded-full bg-secondary/5 p-1 ring-1 ring-secondary/10">
+      {opts.map((o) => (
+        <button
+          key={o.id}
+          type="button"
+          onClick={() => setScope(o.id)}
+          aria-pressed={scope === o.id}
+          className={cn(
+            "shrink-0 rounded-full px-3.5 py-1.5 text-[12px] font-semibold uppercase tracking-[0.06em] transition-colors",
+            scope === o.id ? "bg-primary text-white shadow-sm" : "text-secondary/70 hover:text-secondary hover:bg-secondary/5"
+          )}
+        >
+          {o.label}
+        </button>
+      ))}
+    </div>
+  );
+}
 
 export function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -102,23 +130,28 @@ export function AdminShell({ children }: { children: React.ReactNode }) {
 
       {/* Main */}
       <div className="lg:pl-64">
-        <header className="sticky top-0 z-20 h-20 bg-[#f4f0e4]/90 backdrop-blur border-b border-secondary/10 flex items-center gap-4 px-5 md:px-8">
-          <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Apri menu">
-            <Menu size={22} />
-          </button>
-          <div className="flex-1">
-            <h1 className="text-xl md:text-2xl font-semibold text-secondary">{title}</h1>
-            <p className="text-xs text-secondary/55">Pannello di controllo · dati dimostrativi</p>
-          </div>
-          <div className="flex items-center gap-3">
-            <div className="text-right hidden sm:block">
-              <p className="text-sm font-semibold text-secondary leading-tight">{session?.name ?? "Demo"}</p>
-              <p className="text-[11px] text-secondary/55">{session?.role ?? "Manager"}</p>
+        <header className="sticky top-0 z-20 bg-[#f4f0e4]/90 backdrop-blur border-b border-secondary/10 px-5 md:px-8">
+          <div className="h-20 flex items-center gap-4">
+            <button className="lg:hidden" onClick={() => setOpen(true)} aria-label="Apri menu">
+              <Menu size={22} />
+            </button>
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl md:text-2xl font-semibold text-secondary truncate">{title}</h1>
+              <p className="text-xs text-secondary/55">Pannello di controllo · dati dimostrativi</p>
             </div>
-            <div className="grid place-items-center h-10 w-10 rounded-full bg-primary text-white font-semibold">
-              {(session?.name ?? "D").slice(0, 1)}
+            <div className="hidden md:block"><ScopeSwitcher /></div>
+            <div className="flex items-center gap-3">
+              <div className="text-right hidden sm:block">
+                <p className="text-sm font-semibold text-secondary leading-tight">{session?.name ?? "Demo"}</p>
+                <p className="text-[11px] text-secondary/55">{session?.role ?? "Manager"}</p>
+              </div>
+              <div className="grid place-items-center h-10 w-10 rounded-full bg-primary text-white font-semibold">
+                {(session?.name ?? "D").slice(0, 1)}
+              </div>
             </div>
           </div>
+          {/* scope switcher — own row on small screens */}
+          <div className="md:hidden pb-3"><ScopeSwitcher /></div>
         </header>
 
         <main className="px-5 md:px-8 py-7">{children}</main>

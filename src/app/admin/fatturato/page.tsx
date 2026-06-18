@@ -1,39 +1,53 @@
+"use client";
+
 import { TrendingUp, Banknote, Store, CalendarRange } from "lucide-react";
 import {
-  REVENUE_MONTHLY, REVENUE_BY_BOUTIQUE, CHANNEL_SPLIT, euro,
+  getRevenueMonthly, getRevenueByBoutique, getChannelSplit, scopeLabel, euro,
 } from "@/lib/admin-data";
+import { useAdminScope } from "@/components/admin/AdminScope";
 import { Card, KpiCard, BarChart, BarList, Donut } from "@/components/admin/ui";
 
 export default function FatturatoPage() {
-  const current = REVENUE_MONTHLY[REVENUE_MONTHLY.length - 1].revenue;
-  const prev = REVENUE_MONTHLY[REVENUE_MONTHLY.length - 2].revenue;
-  const growth = Math.round(((current - prev) / prev) * 1000) / 10;
-  const total10 = REVENUE_MONTHLY.reduce((s, m) => s + m.revenue, 0);
-  const totalOrders = REVENUE_BY_BOUTIQUE.reduce((s, b) => s + b.orders, 0);
-  const avgTicket = total10 / totalOrders;
+  const { scope } = useAdminScope();
+  const monthly = getRevenueMonthly(scope);
+  const byBoutique = getRevenueByBoutique(scope);
+  const channel = getChannelSplit(scope);
+
+  const current = monthly[monthly.length - 1].revenue;
+  const prev = monthly[monthly.length - 2].revenue;
+  const growth = prev ? Math.round(((current - prev) / prev) * 1000) / 10 : 0;
+  const total10 = monthly.reduce((s, m) => s + m.revenue, 0);
+  const totalOrders = byBoutique.reduce((s, b) => s + b.orders, 0);
+  const avgTicket = totalOrders ? total10 / totalOrders : 0;
+  const isAll = scope === "all";
 
   return (
     <div className="space-y-6">
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <KpiCard label="Fatturato giugno" value={euro(current)} trend={`+${growth}%`} sub="vs maggio" icon={<Banknote size={18} />} />
+        <KpiCard label="Fatturato giugno" value={euro(current)} trend={`${growth >= 0 ? "+" : ""}${growth}%`} sub="vs maggio" icon={<Banknote size={18} />} />
         <KpiCard label="Ultimi 10 mesi" value={euro(total10)} sub="totale cumulato" icon={<CalendarRange size={18} />} accent="secondary" />
         <KpiCard label="Scontrino medio" value={euro(avgTicket)} sub="sul periodo" icon={<TrendingUp size={18} />} accent="green" />
-        <KpiCard label="Boutique attive" value={String(REVENUE_BY_BOUTIQUE.length)} sub="Milano + Roma" icon={<Store size={18} />} />
+        <KpiCard
+          label={isAll ? "Boutique attive" : "Bottega"}
+          value={isAll ? String(byBoutique.length) : scopeLabel(scope)}
+          sub={isAll ? "Cosenza, Catanzaro, Lamezia" : "vista singola"}
+          icon={<Store size={18} />}
+        />
       </div>
 
-      <Card title="Andamento del fatturato" subtitle="Ricavi mensili — set 2025 / giu 2026">
-        <BarChart data={REVENUE_MONTHLY.map((m) => ({ label: m.month, value: m.revenue }))} format={(v) => euro(v)} height={260} />
+      <Card title="Andamento del fatturato" subtitle={`Ricavi mensili — set 2025 / giu 2026 · ${scopeLabel(scope)}`}>
+        <BarChart data={monthly.map((m) => ({ label: m.month, value: m.revenue }))} format={(v) => euro(v)} height={260} />
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        <Card title="Fatturato per boutique" subtitle="Mese corrente">
+        <Card title="Fatturato per boutique" subtitle={isAll ? "Mese corrente" : scopeLabel(scope)}>
           <BarList
-            data={REVENUE_BY_BOUTIQUE.map((b) => ({ label: `${b.boutique}`, value: b.revenue, sub: `${b.orders} ordini` }))}
+            data={byBoutique.map((b) => ({ label: `${b.boutique}`, value: b.revenue, sub: `${b.orders} ordini` }))}
             format={(v) => euro(v)}
           />
         </Card>
         <Card title="Mix per canale" subtitle="Quota sul fatturato">
-          <Donut data={CHANNEL_SPLIT} />
+          <Donut data={channel} />
           <p className="mt-5 text-xs text-secondary/55">
             Il canale <span className="font-semibold text-primary">Pickup</span> è in crescita costante:
             sempre più clienti ordinano e ritirano in boutique.
@@ -54,7 +68,7 @@ export default function FatturatoPage() {
               </tr>
             </thead>
             <tbody>
-              {REVENUE_BY_BOUTIQUE.map((b) => (
+              {byBoutique.map((b) => (
                 <tr key={b.boutique} className="border-b border-secondary/5 last:border-0">
                   <td className="py-3 pr-4 font-medium text-secondary">{b.boutique}</td>
                   <td className="py-3 pr-4 text-secondary/70">{b.city}</td>
