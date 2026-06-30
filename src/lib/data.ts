@@ -91,7 +91,7 @@ export const COMPANY = {
   address: "Via Nicolò Porpora 12, 00198 Roma",
   vat: "P.IVA 15501451007",
   year: "2026",
-  credit: "Demo Studio",
+  credit: "Lorenzo.studio",
 };
 
 export interface FeatureIcon {

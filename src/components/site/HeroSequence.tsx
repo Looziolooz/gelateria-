@@ -146,7 +146,7 @@ export function HeroSequence({ className = "" }: { className?: string }) {
               Artigiano Gelateria
             </p>
           </div>
-          <h1 className="title caviar fs-120 fs-m-50 t-lh-1 t-u c-secondary m-0">
+          <h1 className="title caviar fs-120 fs-m-50 t-lh-1 t-u italic c-secondary m-0">
             <span className="hero-mask block overflow-hidden">
               <span className="block">Gelato</span>
             </span>

@@ -12,11 +12,11 @@ import { EASE, prefersReducedMotion } from "@/lib/motion";
    gelato cup marking the shop. One hand-placed layout per city.
    ============================================================ */
 
-const INK = "#6e4f33";        // noce — landmark outlines
-const INK_SOFT = "#b9a07e";   // faded outlines / blocks
-const PETROL = "#2c595e";     // labels
-const PARK = "#b9c4a3";       // salvia
-const WATER = "#9fc0c4";
+const INK = "#6B4F3A";        // noce — landmark outlines
+const INK_SOFT = "#D8C4B2";   // Blush Linen — faded outlines / blocks
+const PETROL = "#2E1A0E";     // Espresso — labels
+const PARK = "#7A8C6B";       // Sage
+const WATER = "#9FB8B4";      // warmer blue
 
 type Place = { glyph: GlyphName; x: number; y: number; label: string; scale?: number };
 type CityMap = {
@@ -125,20 +125,20 @@ function ConeCupPin({ label }: { label: string }) {
   return (
     <g data-cone style={{ transformBox: "fill-box", transformOrigin: "center bottom" }}>
       {/* shadow */}
-      <ellipse cx="0" cy="2" rx="16" ry="4.5" fill="rgba(42,38,32,0.18)" />
+      <ellipse cx="0" cy="2" rx="16" ry="4.5" fill="rgba(46,26,14,0.18)" />
       {/* cup */}
-      <path d="M-14 -2 L-11 -30 H11 L14 -2 Z" fill="#b23a2c" stroke="#7d2419" strokeWidth="2" strokeLinejoin="round" />
-      <path d="M-12 -22 H12" stroke="#7d2419" strokeWidth="1.4" opacity="0.6" />
+      <path d="M-14 -2 L-11 -30 H11 L14 -2 Z" fill="#C1603A" stroke="#8A3A22" strokeWidth="2" strokeLinejoin="round" />
+      <path d="M-12 -22 H12" stroke="#8A3A22" strokeWidth="1.4" opacity="0.6" />
       {/* scoops */}
-      <circle cx="-5" cy="-34" r="9" fill="#ac7b40" />
-      <circle cx="6" cy="-36" r="9" fill="#e4d3b6" />
-      <circle cx="0.5" cy="-42" r="8.5" fill="#6e4f33" />
+      <circle cx="-5" cy="-34" r="9" fill="#D4973A" />
+      <circle cx="6" cy="-36" r="9" fill="#EDE0C4" />
+      <circle cx="0.5" cy="-42" r="8.5" fill="#6B4F3A" />
       {/* spoon */}
-      <path d="M12 -52 L19 -30" stroke="#ac7b40" strokeWidth="3" strokeLinecap="round" />
+      <path d="M12 -52 L19 -30" stroke="#D4973A" strokeWidth="3" strokeLinecap="round" />
       {/* label pill */}
       <g transform="translate(0,-64)">
-        <rect x={-w / 2} y="-13" width={w} height="22" rx="11" fill="#2c595e" />
-        <text x="0" y="2.5" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#f6efe1" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="0.02em">
+        <rect x={-w / 2} y="-13" width={w} height="22" rx="11" fill="#2E1A0E" />
+        <text x="0" y="2.5" textAnchor="middle" fontSize="11.5" fontWeight="700" fill="#F5EDD8" fontFamily="'Hanken Grotesk', sans-serif" letterSpacing="0.02em">
           {label}
         </text>
       </g>
@@ -237,7 +237,7 @@ export function CartoonMap({ city, className }: { city: City; className?: string
   return (
     <svg ref={svgRef} viewBox="0 0 1000 680" className={className} role="img" aria-label={`Mappa illustrata di ${city} con le botteghe Artigiano`}>
       {/* base */}
-      <rect x="0" y="0" width="1000" height="680" rx="22" fill="#f3ead4" />
+      <rect x="0" y="0" width="1000" height="680" rx="22" fill="#F5EDD8" />
 
       {/* faint street grid */}
       <g stroke={INK_SOFT} strokeWidth="2" opacity="0.35" fill="none">

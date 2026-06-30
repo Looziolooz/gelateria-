@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { HorizontalScroll } from "@/components/site/HorizontalScroll";
-import { HeroSequence } from "@/components/site/HeroSequence";
+import { GelatoHero } from "@/components/site/GelatoHero";
 import { StiliPanels } from "@/components/site/StiliPanels";
-import { ProcessScroll } from "@/components/site/ProcessScroll";
+import { ProcessTimeline } from "@/components/site/ProcessTimeline";
 import { HomeMapPanel } from "@/components/site/HomeMapPanel";
 import { ParallaxController } from "@/components/site/ParallaxController";
 import { Figure } from "@/components/site/Figure";
@@ -19,29 +19,18 @@ export default function HomePage() {
     <HorizontalScroll>
       <ParallaxController />
 
-      {/* 1 — HERO. The section is 2 viewports wide and the visual pins
-            (sticky) for one viewport while the chocolate-pour scrubs, then it
-            scrolls away to the story panels. */}
-      <section className="relative w-[200svw] h-[100svh] shrink-0">
-        <div className="grain sticky left-0 top-0 h-[100svh] w-[100svw] overflow-hidden bg-cream">
-          <HeroSequence className="absolute inset-0 h-full w-full" />
-          {/* Cream feather — the frame's own background is light, so we extend it
-              edge-to-edge into the page: the chocolate scene dissolves into panna
-              with no visible border, and the periphery (where upscaling shows) is
-              hidden in cream. */}
-          <div aria-hidden className="absolute inset-0" style={{ background: "radial-gradient(120% 112% at 54% 42%, transparent 36%, #f6efe1 88%)" }} />
-          <div aria-hidden className="absolute inset-x-0 top-0 h-[24%]" style={{ background: "linear-gradient(180deg, #f6efe1, transparent)" }} />
-          <div aria-hidden className="absolute inset-x-0 bottom-0 h-[34%]" style={{ background: "linear-gradient(0deg, #f6efe1 12%, transparent)" }} />
-          {/* soft cream scrim behind the lower-left title for legibility */}
-          <div aria-hidden className="absolute inset-0" style={{ background: "linear-gradient(to top right, rgba(246,239,225,0.94) 0%, rgba(246,239,225,0.45) 30%, transparent 56%)" }} />
-        </div>
+      {/* 1 — HERO. Full-screen flavour slider: hand-held cone on a solid
+            flavour-coloured field, oversized ghost name, ← → to change gusto,
+            and a "Scorri" cue pointing to the next section. One panel. */}
+      <section className="relative w-[100svw] h-[100svh] shrink-0 overflow-hidden">
+        <GelatoHero />
       </section>
 
       {/* 2 — STILI DI GELATO (four editorial panels) */}
       <StiliPanels />
 
-      {/* 3 — IL PROCESSO (four cinematic dark panels) */}
-      <ProcessScroll />
+      {/* 3 — IL PROCESSO (horizontal photo timeline: .h-scroll gallery + filling rail) */}
+      <ProcessTimeline />
 
       {/* 4 — VALORI + CTA + interior photo */}
       <section className="relative w-[100svw] h-[100svh] shrink-0 b-back-1 c-secondary flex items-center overflow-hidden">

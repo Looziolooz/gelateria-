@@ -10,37 +10,38 @@
    Fonts — Fraunces / Pinyon Script / Hanken Grotesk via next/font.
    The ported utility classes are remapped to them below.
    ============================================================ */
-.caviar    { font-family: var(--font-fraunces), Georgia, "Times New Roman", serif !important; }
-.core      { font-family: var(--font-hanken), system-ui, sans-serif !important; }
-.cormorant { font-family: var(--font-pinyon), cursive !important; }
+.caviar    { font-family: var(--font-fraunces), "Playfair Display", Georgia, serif !important; }
+.core      { font-family: var(--font-hanken), "Source Serif 4", Georgia, serif !important; }
+.cormorant { font-family: var(--font-pinyon), "Pinyon Script", cursive !important; }
+.label     { font-family: var(--font-label), "Libre Franklin", system-ui, sans-serif; }
 
 /* ============================================================
    Design tokens — "La Strega Nocciola" (bottega palette)
    ============================================================ */
 @theme {
-  --color-primary: #ac7b40;     /* nocciola oro — etichette, accenti, bottoni */
-  --color-secondary: #2c595e;   /* verde bottega (petrolio) — superfici scure, titoli, testo */
-  --color-cream: #f6efe1;       /* panna — sfondo chiaro */
-  --color-gold: #e4d3b6;        /* mattone — sfondo caldo */
-  --color-gold-soft: #efe3cc;   /* mattone chiaro */
-  --color-ink: #2a2620;         /* bronzo — inchiostro */
-  --color-cocoa: #6e4f33;       /* noce — testo attenuato */
-  --color-rosso: #b23a2c;       /* rosso gelato — pop / CTA */
-  --color-salvia: #a2ae95;      /* salvia */
-  --color-bottega-2: #1f4348;   /* petrolio scuro — profondità */
-  --color-nocciola: #ac7b40;
-  --color-panna: #f6efe1;
+  --color-primary: #D4973A;     /* Saffron — accenti/etichette */
+  --color-secondary: #2E1A0E;   /* Espresso — scuri/testo */
+  --color-cream: #F5EDD8;       /* Parchment — bg */
+  --color-gold: #EDE0C4;        /* Cream — superfici */
+  --color-gold-soft: #F0E6CE;
+  --color-ink: #2E1A0E;         /* Espresso */
+  --color-cocoa: #6B4F3A;       /* muted */
+  --color-rosso: #C1603A;       /* Terracotta — CTA */
+  --color-salvia: #7A8C6B;      /* Sage */
+  --color-bottega-2: #1E110A;
+  --color-nocciola: #D4973A;
+  --color-panna: #F5EDD8;
 
-  --font-caviar: var(--font-fraunces), "Fraunces", Georgia, "Times New Roman", serif;
-  --font-core: var(--font-hanken), "Hanken Grotesk", system-ui, sans-serif;
+  --font-caviar: var(--font-fraunces), "Playfair Display", Georgia, serif;
+  --font-core: var(--font-hanken), "Source Serif 4", Georgia, serif;
   --font-cormorant: var(--font-pinyon), "Pinyon Script", cursive;
 }
 
 /* shadcn baseline (kept for primitives / cn util) */
 :root {
-  --background: #f6efe1;
-  --foreground: #2c595e;
-  --primary: #ac7b40;
+  --background: #F5EDD8;
+  --foreground: #2E1A0E;
+  --primary: #C1603A;   /* terracotta come primario shadcn */
   --radius: 0.5rem;
 }
 
@@ -54,7 +55,7 @@
     scroll-behavior: smooth;
   }
   body {
-    font-family: var(--font-hanken), system-ui, sans-serif;
+    font-family: var(--font-hanken), "Source Serif 4", Georgia, serif;
     color: var(--color-secondary);
     background-color: var(--color-cream);
     overflow-x: hidden;
@@ -62,7 +63,7 @@
     line-height: 1.6;
   }
   h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.1; }
-  ::selection { background: var(--color-primary); color: #f6efe1; }
+  ::selection { background: var(--color-primary); color: #F5EDD8; }
   a { color: inherit; text-decoration: none; }
 }
 
@@ -120,7 +121,7 @@ html.lenis, html.lenis body { height: auto; }
 
 /* small uppercase eyebrow / label — Hanken Grotesk */
 .eyebrow {
-  font-family: var(--font-core);
+  font-family: var(--font-label), "Libre Franklin", system-ui, sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.22em;
   font-weight: 600;
@@ -129,12 +130,12 @@ html.lenis, html.lenis body { height: auto; }
   line-height: 1.3;
 }
 
-/* giant display title — Fraunces */
+/* giant display title — Playfair Display (Art Deco: heavy weight + generous tracking) */
 .display-title {
   font-family: var(--font-caviar);
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.005em;
+  letter-spacing: 0.12em;
   line-height: 1.04;
   color: var(--color-secondary);
   font-size: clamp(34px, 7.4vw, 120px);
@@ -178,7 +179,7 @@ html.lenis, html.lenis body { height: auto; }
 .pf-input {
   width: 100%;
   background: #fffdf8;
-  border: 1.5px solid rgba(44, 89, 94, 0.22);
+  border: 1.5px solid rgba(46, 26, 14, 0.22);
   border-radius: 10px;
   padding: 0.7rem 0.9rem;
   font-size: 14px;
@@ -186,10 +187,10 @@ html.lenis, html.lenis body { height: auto; }
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
   outline: none;
 }
-.pf-input::placeholder { color: rgba(44, 89, 94, 0.45); }
+.pf-input::placeholder { color: rgba(46, 26, 14, 0.45); }
 .pf-input:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(172, 123, 64, 0.18);
+  box-shadow: 0 0 0 3px rgba(212, 151, 58, 0.18);
 }
 textarea.pf-input { resize: vertical; min-height: 120px; }
 
@@ -197,7 +198,7 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
   display: grid; place-items: center;
   height: 38px; width: 38px;
   border-radius: 999px;
-  border: 1.5px solid rgba(44, 89, 94, 0.25);
+  border: 1.5px solid rgba(46, 26, 14, 0.25);
   background: #fffdf8;
   color: var(--color-secondary);
   font-size: 20px; line-height: 1;
@@ -246,8 +247,8 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(172, 123, 64, 0.55) 18%,
-    rgba(172, 123, 64, 0.55) 82%,
+    rgba(212, 151, 58, 0.55) 18%,
+    rgba(212, 151, 58, 0.55) 82%,
     transparent
   );
 }
@@ -265,9 +266,9 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
   overflow: hidden;
   border-radius: 16px;
   box-shadow:
-    0 1px 0 rgba(246, 239, 225, 0.5) inset,
-    0 18px 48px -22px rgba(31, 40, 30, 0.55);
-  outline: 1px solid rgba(172, 123, 64, 0.28);
+    0 1px 0 rgba(245,237,216,0.5) inset,
+    0 4px 24px rgba(46,26,14,0.10);
+  outline: 1px solid rgba(216,196,178,0.6);
   outline-offset: -1px;
 }
 .photo-grade { position: relative; isolation: isolate; }
@@ -279,8 +280,8 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
   pointer-events: none;
   mix-blend-mode: multiply;
   background:
-    radial-gradient(125% 125% at 50% 28%, transparent 52%, rgba(31, 40, 30, 0.34) 100%),
-    linear-gradient(180deg, rgba(172, 123, 64, 0.1), rgba(44, 89, 94, 0.12));
+    radial-gradient(125% 125% at 50% 30%, transparent 60%, rgba(46,26,14,0.20) 100%),
+    linear-gradient(180deg, rgba(212,151,58,0.08), rgba(193,96,58,0.08));
 }
 /* replayable entrance for dynamic content (re-mounts on state change, e.g.
    city toggle) where the IntersectionObserver can't re-observe new nodes */
@@ -303,10 +304,76 @@ textarea.pf-input { resize: vertical; min-height: 120px; }
   .fade-rise { animation: none; }
 }
 
+/* ============================================================
+   Art Deco embellishments — heritage/retro details
+   ============================================================ */
+
+/* Art Deco double-line border frame.
+   Creates the characteristic Deco double stroke around any inline/block element.
+   Colour comes from `currentColor` (set via Tailwind `text-…`).
+   Use with padding so content clears the inner line. */
+.artdeco-frame {
+  position: relative;
+  outline: 1.5px solid currentColor;
+  outline-offset: 0;
+}
+.artdeco-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  pointer-events: none;
+  border: 1px solid currentColor;
+  opacity: 0.8;
+}
+
+/* Art Deco sunburst — subtle radial rays, tone-on-tone.
+   Rendered as a pseudo-element so content stays above.
+   The host must set its own positioning context (`relative`/`absolute`/`sticky`)
+   via Tailwind utility — this class does NOT set `position` itself (see .grain). */
+.artdeco-sunburst::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-conic-gradient(
+      transparent 0deg,
+      currentColor 0.5deg,
+      transparent 2deg
+    )
+    50% 50% / 100% 100%;
+  opacity: 0.05;
+  mask-image: radial-gradient(circle at 50% 50%, transparent 20%, black 60%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, transparent 20%, black 60%);
+}
+
+/* Art Deco geometric divider — hairline with diamond accent.
+   Replaces simple rules where a Deco touch is wanted. */
+.rule-artdeco {
+  height: 0;
+  border: 0;
+  border-top: 1px solid var(--color-primary);
+  opacity: 0.3;
+  position: relative;
+  text-align: center;
+  overflow: visible;
+}
+.rule-artdeco::after {
+  content: "◆";
+  position: absolute;
+  top: -5.5px;
+  font-size: 8px;
+  color: var(--color-primary);
+  line-height: 1;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+}
+
 /* horizontal slider scrollbar (story gallery) — nocciola thumb on a faint track.
    Note: don't set scrollbar-width/color, or Chrome ignores ::-webkit and the
    custom bar won't show. Firefox falls back to its default scrollbar. */
 .h-scroll::-webkit-scrollbar { height: 9px; }
-.h-scroll::-webkit-scrollbar-track { background: rgba(44,89,94,0.12); border-radius: 999px; margin: 0 2px; }
+.h-scroll::-webkit-scrollbar-track { background: rgba(46,26,14,0.12); border-radius: 999px; margin: 0 2px; }
 .h-scroll::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 999px; min-width: 60px; }
 .h-scroll::-webkit-scrollbar-thumb:hover { background: var(--color-secondary); }

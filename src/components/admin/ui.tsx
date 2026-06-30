@@ -127,7 +127,7 @@ export function BarList({
 }
 
 /* ---------------- Donut (conic) ---------------- */
-const DONUT_COLORS = ["#ac7b40", "#2c595e", "#a2ae95"];
+const DONUT_COLORS = ["#D4973A", "#2E1A0E", "#7A8C6B"];
 export function Donut({ data }: { data: { channel: string; value: number }[] }) {
   const total = data.reduce((s, d) => s + d.value, 0) || 1;
   const stops = data

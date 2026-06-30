@@ -1,23 +1,31 @@
 import type { Metadata } from "next";
-import { Fraunces, Pinyon_Script, Hanken_Grotesk } from "next/font/google";
+import { Playfair_Display, Source_Serif_4, Libre_Franklin, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 
-// "La Strega Nocciola" type system
-const fraunces = Fraunces({
+// "Good Food" type system — Playfair Display + Source Serif 4 + Libre Franklin
+const playfair = Playfair_Display({
   subsets: ["latin"],
   style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700", "900"],
   variable: "--font-fraunces",
+  display: "swap",
+});
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["400", "600"],
+  variable: "--font-hanken",
+  display: "swap",
+});
+const libre = Libre_Franklin({
+  subsets: ["latin"],
+  weight: ["500", "600"],
+  variable: "--font-label",
   display: "swap",
 });
 const pinyon = Pinyon_Script({
   subsets: ["latin"],
   weight: "400",
   variable: "--font-pinyon",
-  display: "swap",
-});
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken",
   display: "swap",
 });
 
@@ -46,7 +54,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="it" className={`${fraunces.variable} ${pinyon.variable} ${hanken.variable}`}>
+    <html lang="it" className={`${playfair.variable} ${sourceSerif.variable} ${libre.variable} ${pinyon.variable}`}>
       <body>{children}</body>
     </html>
   );

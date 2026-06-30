@@ -14,11 +14,13 @@ export function ProcessScroll() {
   return (
     <section
       className="grain relative w-[100svw] h-[100svh] shrink-0 overflow-y-auto flex items-center"
-      style={{ background: "var(--color-bottega-2, #1f4348)" }}
+      style={{ background: "var(--color-bottega-2, #1E110A)" }}
     >
       {/* corner glows */}
-      <span className="absolute top-0 right-0 w-80 h-80 opacity-[0.08] pointer-events-none" style={{ background: "radial-gradient(circle at 100% 0%, var(--color-primary, #ac7b40) 0%, transparent 70%)" }} />
-      <span className="absolute bottom-0 left-0 w-96 h-96 opacity-[0.05] pointer-events-none" style={{ background: "radial-gradient(circle at 0% 100%, var(--color-cream, #f6efe1) 0%, transparent 70%)" }} />
+      <span className="absolute top-0 right-0 w-80 h-80 opacity-[0.08] pointer-events-none" style={{ background: "radial-gradient(circle at 100% 0%, var(--color-primary, #D4973A) 0%, transparent 70%)" }} />
+      <span className="absolute bottom-0 left-0 w-96 h-96 opacity-[0.05] pointer-events-none" style={{ background: "radial-gradient(circle at 0% 100%, var(--color-cream, #F5EDD8) 0%, transparent 70%)" }} />
+      {/* Art Deco sunburst — faint radial rays, tone-on-tone */}
+      <span aria-hidden className="artdeco-sunburst absolute inset-0 pointer-events-none" style={{ color: "var(--color-primary)" }} />
 
       <div data-reveal-stagger className="relative z-10 w-full max-w-[1200px] mx-auto px-[6vw] py-24 lg:py-0">
         <p data-reveal className="eyebrow !text-primary mb-3">Dietro a ogni gusto</p>

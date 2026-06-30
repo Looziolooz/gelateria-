@@ -7,12 +7,14 @@ import { BrandLogo } from "@/components/BrandLogo";
 // the footer — the footer is a brand sign-off.
 export function SiteFooter() {
   return (
-    <footer className="b-secondary c-white">
-      {/* Brand sign-off */}
-      <div className="site-wrap py-[70px] md:py-[90px] text-center">
-        <BrandLogo tone="light" className="items-center mb-3" />
-        <p className="cormorant text-[30px] md:text-[38px] leading-none text-primary mb-6">dal 1978</p>
-        <hr className="rule-gold rule-gold--center" />
+    <footer className="b-secondary c-white flex flex-col h-full">
+      {/* Brand sign-off — grows to push legal+credit down */}
+      <div className="site-wrap py-[70px] md:py-[90px] text-center flex-1 flex flex-col justify-center">
+        <BrandLogo tone="light" className="items-center mb-4" />
+        <div className="artdeco-frame inline-flex flex-col items-center mx-auto px-8 py-4 text-primary/70 mb-4">
+          <p className="cormorant text-[28px] md:text-[34px] leading-none">dal 1978</p>
+        </div>
+        <hr className="rule-artdeco w-24 mx-auto" />
       </div>
 
       {/* Legal bar */}
@@ -34,7 +36,12 @@ export function SiteFooter() {
               <img src="/icons/icon-fb-w.svg" alt="Facebook" className="h-[18px] w-[18px]" />
             </a>
           </div>
-          <span className="caviar text-white/45">Website by {COMPANY.credit}</span>
+        </div>
+      </div>
+      {/* Credit bar — pinned to bottom */}
+      <div className="border-t border-white/8">
+        <div className="site-wrap py-3 text-center">
+          <span className="caviar text-[11px] text-white/35">Website by {COMPANY.credit}</span>
         </div>
       </div>
     </footer>

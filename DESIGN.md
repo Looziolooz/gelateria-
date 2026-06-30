@@ -14,23 +14,25 @@
   warm petrol-and-gold, the maestro's craft. Heritage, not candy-shop.
 
 ## Aesthetic Direction
-- **Direction:** warm bottega / heritage-editorial.
+- **Direction:** **Good Food** — editoriale gourmand, foto-first, serif appetitosi, toni di spezie/terra/miele.
 - **Decoration level:** intentional — warm photography, a script signature, a
   hand-illustrated cartoon map; structure does most of the work.
 - **Mood:** crafted, unhurried, premium-but-friendly. Old Italian laboratorio.
-- **Signature move:** desktop homepage scrolls HORIZONTALLY through full-screen
-  panels; the hero is a pinned, scroll-scrubbed chocolate-pour frame sequence.
+- **Signature move:** the whole public site scrolls HORIZONTALLY through
+  full-screen panels; the homepage hero is a full-bleed **flavour slider** — a
+  hand-held cone on its own colour field, auto-looping through gusti behind an
+  oversized ghost name.
 
 ## Typography
-- **Display / Hero:** **Fraunces** (variable serif, optical sizing) — all big
-  titles, uppercase, tight leading. Vintage warmth, the "gusto di una volta" feel.
-- **Body / UI / Labels:** **Hanken Grotesk** — paragraphs, nav, form labels,
-  admin. Warm humanist grotesque, highly readable.
+- **Display / Hero:** **Playfair Display** (con italic per titoli) — all big
+  titles, uppercase, tight leading. Editorial warmth, appetitoso.
+- **Body / UI:** **Source Serif 4** — paragraphs, body text. Warm serif readability.
+- **Label / Etichette uppercase:** **Libre Franklin** — eyebrows, label pills, admin tables.
 - **Signature / Script:** **Pinyon Script** — used sparingly (brand flourish).
 - **Loading:** `next/font/google` in `src/app/layout.tsx` → CSS vars
-  `--font-fraunces`, `--font-hanken`, `--font-pinyon`.
-- **Class bridge (ported framework):** `.caviar` → Fraunces, `.core` → Hanken,
-  `.cormorant` → Pinyon (remapped in `globals.css`).
+  `--font-fraunces`, `--font-hanken`, `--font-label`, `--font-pinyon`.
+- **Class bridge (ported framework):** `.caviar` → Playfair Display, `.core` → Source Serif 4,
+  `.cormorant` → Pinyon, `.label` → Libre Franklin (remapped in `globals.css`).
 - **Scale:** giant display `clamp(34px → 132px)` (`.display-title`, `fs-120/130`);
   section titles `fs-60/70`; eyebrow/labels `clamp(12 → 15px)` uppercase,
   `letter-spacing .22em`; body `15–20px`, line-height ~1.6.
@@ -39,22 +41,23 @@
 Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root`
 (`--primary`, `--secondary`, `--background-1/2`, `--black`, `--white`).
 
-- **Approach:** balanced — warm neutrals carry it, gold accents, rosso pops.
-- **panna** `#F6EFE1` — page background, text on dark (`--background-1`, `bg-cream`).
-- **mattone** `#E4D3B6` — warm panels/cards (`--background-2`, `bg-gold`).
-- **verde bottega (petrolio)** `#2C595E` — PRIMARY DARK: headings, body text,
-  dark surfaces (footer, the "un'icona" panel), admin sidebar (`--secondary`).
-- **petrolio scuro** `#1F4348` — depth/hover on dark.
-- **nocciola oro** `#AC7B40` — ACCENT: eyebrows/labels, links, secondary chips,
-  brand marks (`--primary`, `text-primary`/`bg-primary`).
-- **rosso gelato** `#B23A2C` — POP, reserved for the primary call-to-action
-  (`.btn-pill`, "Conferma prenotazione", "Prenota il ritiro"). Not for labels.
-- **salvia** `#A2AE95` — soft secondary (cartoon-map parks, accents).
-- **noce** `#6E4F33` — muted text. **bronzo** `#2A2620` — darkest ink.
+- **Approach:** warm editorial — spezie, terra, miele; fotografia protagonista.
+- **Parchment** `#F5EDD8` — page background, text on dark (`--background-1`, `bg-cream`).
+- **Cream** `#EDE0C4` — warm panels/cards (`--background-2`, `bg-gold`).
+- **Espresso** `#2E1A0E` — PRIMARY DARK: headings, body text,
+  dark surfaces (footer, panels), admin sidebar (`--secondary`). Sostituisce il petrolio.
+- **scuro profondo** `#1E110A` — depth/hover on dark.
+- **Saffron** `#D4973A` — ACCENT: eyebrows/labels, links, secondary chips,
+  brand marks (`--primary`, `text-primary`/`bg-primary`). Sostituisce il nocciola oro.
+- **Terracotta** `#C1603A` — CTA PRIMARIA: unica azione primaria per schermata
+  (`.btn-pill`, "Conferma prenotazione", "Prenota il ritiro"). Sostituisce il rosso gelato.
+- **Sage** `#7A8C6B` — soft secondary (cartoon-map parks, accents).
+- **cocoa** `#6B4F3A` — muted text.
+- **Blush Linen** `#D8C4B2` — bordi/separatori.
 - **Semantic (admin only):** success `emerald-600`, warning `amber-600`,
   error/`rosso` `red-600`, info `blue-600`.
-- **Hierarchy rule:** gold = brand accent + labels + secondary actions;
-  **rosso = the one primary action** on a screen. Never use rosso for labels.
+- **Hierarchy rule:** Saffron = brand accent + labels + secondary actions;
+  **Terracotta = the one primary action** on a screen. Never use Terracotta for labels.
 
 ## Spacing
 - **Base unit:** 4px (ported `--spacing-*` scale, rem→px: 5/10/15/20/30/40/50/60…).
@@ -81,8 +84,9 @@ Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root
 ## Motion
 - **Approach:** intentional but cinematic. Reveal-on-scroll (`[data-reveal]`,
   fade-up 0.9s `cubic-bezier(.22,.61,.36,1)`; `[data-reveal-stagger]` cascades
-  children); `scrollLeft`-driven hero frame scrub + masked Fraunces title; a
-  scroll-driven horizontal parallax controller (`[data-px]`); GSAP map-pin drop
+  children); an auto-looping full-bleed hero flavour slider (crossfade +
+  colour-field tween); a scroll-driven horizontal parallax controller
+  (`[data-px]`); GSAP map-pin drop
   (`back.out`); shared easing/duration tokens in `src/lib/motion.ts`. Horizontal
   travel lerp (`EASING 0.09`). Respects `prefers-reduced-motion` throughout.
 - **Photography:** one editorial set — `<Figure>` frame (`.figure-frame` gold
@@ -116,3 +120,8 @@ Tokens live in `globals.css` `@theme` (`--color-*`) and `theme-utils.css` `:root
 | 2026-06-18 | Newsletter sign-up lives **only** in the nav overlay (removed from all footers; footer is a brand sign-off) | User wants it only in the toggle menu |
 | 2026-06-18 | Admin entry surfaced as an understated "Gestionale" chip in the overlay + footer (was too hidden) | User couldn't find it after the "less visible" change |
 | 2026-06-18 | Pickup is a **controlled, gated** horizontal wizard (own carousel, not the free-scroll track): off-screen steps are `inert`, "Continua" is disabled until the step's required fields are filled, the stepper can't skip ahead | User: every step mandatory, "se non si compila non si può andare avanti" to avoid order omissions |
+| 2026-06-30 | Adottato design system **Good Food** (vault) — remap token colori + font su Playfair/Source Serif 4/Libre Franklin; petrolio→espresso, rosso→terracotta, oro→saffron | Evoluzione editoriale gourmand: foto protagonista, serif appetitosi, palette spezie/terra/miele |
+| 2026-06-30 | Hero homepage rifatta: da sequenza colata-di-cioccolato (`HeroSequence`) a **flavour slider full-bleed** (`GelatoHero`) — cono in mano sul campo-colore del gusto, nome ghost Playfair, **auto-loop** dei gusti, frecce ←→ per il gusto + cue "Scorri →" verso la sezione successiva | Richiesta utente: hero "showcase gusti" stile reference, foto cono protagonista. `HeroSequence` + `hero-frames/` restano nel repo ma inutilizzati |
+| 2026-06-30 | Header **sempre trasparente su tutte le pagine** (niente barra cream opaca); il **tono del testo si adatta da solo** al pannello sotto — campiona la luminanza dello sfondo subito sotto la barra (`elementsFromPoint`, salta gli scrim `pointer-events:none`) → testo chiaro su pannelli scuri, scuro su pannelli chiari | La barra opaca copriva i testi in cima a ogni pagina; trasparente + tono auto risolve contrasto su hero scuro e sezioni chiare/scure |
+| 2026-06-30 | Foto cono hero: watermark ✦ del generatore rimosso (clone del fondo) + colore fondo campionato per gusto (`scripts/hero-cono.mjs`, prolunga la foto bordo-a-bordo). I fondi-gusto (oliva/rosa/ocra/taupe) sono una **deroga hero-only** alla palette parchment; CTA "Ordina" = testo Playfair bianco (non pill terracotta, invisibile sui fondi gusto) | Asset puliti + contrasto: terracotta sparirebbe sul rosso fragola |
+| 2026-06-30 | "Il processo" rifatto: da riga numerata scura a **timeline ORIZZONTALE con foto** (`ProcessTimeline`, `motion/react`) — galleria `.h-scroll` di 4 card-foto (una per step) su una **rotaia orizzontale che si riempie oro→verde foresta** allo scroll (`useScroll` scrollXProgress), puntini + etichette che si accendono, **tema parchment chiaro**. Coerente col paradigma orizzontale del sito | Richiesta utente: immagini + orizzontale, non verticale. Aggiunto dep `motion`; `ProcessScroll` resta nel repo ma inutilizzato |
