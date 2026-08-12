@@ -41,7 +41,7 @@ export function SiteFooter() {
       {/* Credit bar — pinned to bottom */}
       <div className="border-t border-white/8">
         <div className="site-wrap py-3 text-center">
-          <span className="caviar text-[11px] text-white/35">Website by {COMPANY.credit}</span>
+          <span className="caviar text-[11px] text-white/35">Creato da {COMPANY.credit}</span>
         </div>
       </div>
     </footer>

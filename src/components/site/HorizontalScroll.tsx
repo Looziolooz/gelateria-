@@ -84,8 +84,10 @@ export function HorizontalScroll({ children }: { children: React.ReactNode }) {
     };
 
     const onWheel = (e: WheelEvent) => {
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
-      const delta = e.deltaY;
+      // Swipe con rotella in OGNI direzione: usiamo l'asse dominante del delta
+      // (verticale: rotella su/giù · orizzontale: trackpad/shift+rotella) e lo
+      // mappiamo sul binario orizzontale. Il tocco/dito scrolla già nativamente.
+      const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
 
       // Let nested horizontal galleries (.h-scroll) consume the gesture first.
       let node = e.target as HTMLElement | null;
